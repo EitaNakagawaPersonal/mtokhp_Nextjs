@@ -40,7 +40,6 @@ export default function Greeting() {
       <div className="absolute inset-0 bg-opacity-50"></div>
 
       {/* テキストコンテンツ */}
-      {/* --- ↓ここからアニメーション用のクラスを追加・変更↓ --- */}
       <div 
         className={`relative z-10 h-full flex flex-col justify-center items-center text-white text-center p-8 transition-all duration-1000 ease-in-out ${
           inView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'

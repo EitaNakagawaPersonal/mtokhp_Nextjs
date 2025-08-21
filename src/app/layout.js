@@ -1,5 +1,8 @@
-import { Geist, Geist_Mono, Noto_Serif_JP } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Serif_JP, Inter } from "next/font/google";
 import "./globals.css";
+import InstagramButton from "@/components/InstagramButton";
+
+const inter = Inter({ subsets: ["latin"] });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +33,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} antialiased`}
       >
         {children}
+        <InstagramButton />
       </body>
     </html>
   );

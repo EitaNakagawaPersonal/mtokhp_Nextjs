@@ -1,8 +1,6 @@
-// 私が想定していた page.js の中身
-import Header from '@/components/Header'; // 👈 正しくインポートしていて
+import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-// import CardSection from '@/components/CardSection';
-
+import CardSection from '@/components/CardSection';
 
 export default function Home() {
   return (
@@ -10,7 +8,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        {/* <CardSection /> */}
+        <CardSection />
       </main>
     </>
   );

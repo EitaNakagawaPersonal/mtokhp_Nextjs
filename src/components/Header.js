@@ -29,7 +29,7 @@ export default function Header() {
     // 【修正①】ヘッダーに固定の高さを設定 (h-20 は 80px)
     <header className="fixed top-0 left-0 z-50 w-full p-4 flex justify-between items-center bg-white shadow-md h-20">
       <Link href="/" onClick={closeMenu} className="flex-shrink-0">
-        <Image src="/images/logo.png" alt="ロゴ" width={160} height={40} priority />
+        <Image src="/images/matsuoka_logo.jpg" alt="ロゴ" width={160} height={40} priority />
       </Link>
 
       {/* ハンバーガーメニューボタン (スマホ・タブレットでのみ表示) */}

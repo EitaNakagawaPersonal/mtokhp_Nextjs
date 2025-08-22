@@ -26,33 +26,30 @@ const cardData = [
 
 export default function CardSection() {
   return (
-    // section全体をコンテナとして中央に配置し、少し余白を追加
-    <section className="w-full max-w-6xl mx-auto py-12 px-4">
-      {/* gridを使ってカードを並べる。gapでカード間の余白を指定 */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    // 👇 クラスを修正: max-w-... と mx-auto を削除し、paddingを調整
+    <section className="w-full py-16 px-4 sm:px-6 lg:px-8">
+      
+      {/* カードグリッド */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {cardData.map((card, index) => (
-          // Linkコンポーネントをカード全体を囲むように変更
           <Link 
             key={index} 
             href={card.link}
-            // groupクラスでホバーの対象に。transitionでアニメーションを滑らかに
             className="group block text-center transition-transform duration-300 ease-in-out hover:scale-105"
           >
-            {/* 画像を表示。アスペクト比を1:1(正方形)に設定 */}
-            <div className="relative w-full aspect-square overflow-hidden">
+            <div className="relative w-full aspect-square overflow-hidden rounded-lg">
               <Image
                 src={card.imageUrl}
                 alt={card.title}
-                fill // 親要素いっぱいに広がる
-                style={{ objectFit: 'cover' }} // アスペクト比を保ったままトリミング
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               />
             </div>
             
-            {/* 項目名。改行(\n)を反映させるためにwhitespace-pre-wrapを使用 */}
-            <h2 className="mt-4 text-xl font-bold whitespace-pre-wrap">
+            <h3 className="mt-4 text-xl font-semibold text-gray-800">
               {card.title}
-            </h2>
+            </h3>
           </Link>
         ))}
       </div>

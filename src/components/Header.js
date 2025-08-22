@@ -18,7 +18,13 @@ const navItems = [
     ]
   },
   { href: "/recruit", label: "採用情報" },
-  { href: "/forest", label: "Forest オンライン店舗" },
+  {
+    label: "Forest オンライン店舗",
+    subItems: [
+      { href: "https://www.yahoo.co.jp/", label: "個人のお客様" },
+      { href: "https://www.yahoo.co.jp/", label: "法人のお客様" },
+    ]
+  },
   { href: "/#contact", label: "お問い合わせ" },
 ];
 

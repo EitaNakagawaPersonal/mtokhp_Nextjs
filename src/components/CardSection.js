@@ -3,20 +3,25 @@ import Image from 'next/image';
 
 const cardData = [
   {
-    title: "木材事業部\n造船資材課",
+    title: "造船資材事業",
     imageUrl: "/images/card_ship.jpg",
     link: "/business/shipbuilding",
   },
   {
-    title: "木材事業部\n建築資材課",
+    title: "建築資材事業",
     imageUrl: "/images/card_construction.jpg",
     link: "/business/construction",
   },
   {
-    title: "建材事業部",
+    title: "レジンテーブル事業",
     imageUrl: "/images/card_materials.jpg",
     link: "/business/materials",
   },
+  {
+    title: "不動産事業",
+    imageUrl: "/images/card_materials.jpg",
+    link: "/business/materials",
+  }
 ];
 
 export default function CardSection() {

@@ -3,11 +3,20 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
 const navItems = [
   { href: "/", label: "ホーム" },
   { href: "/about", label: "企業情報" },
-  { href: "/business", label: "事業部" },
+  {
+    label: "事業部",
+    subItems: [
+      { href: "/business/construction", label: "建築資材事業" },
+      { href: "/business/shipbuilding", label: "造船資材事業" },
+      { href: "/business/resin-table", label: "レジンテーブル事業" },
+      { href: "/business/real-estate", label: "不動産事業" },
+    ]
+  },
   { href: "/recruit", label: "採用情報" },
   { href: "/forest", label: "Forest オンライン店舗" },
   { href: "/#contact", label: "お問い合わせ" },
@@ -15,78 +24,98 @@ const navItems = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
-  // メニューの開閉を切り替える
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    setOpenDropdown(null);
   };
 
-  // メニューを閉じる
   const closeMenu = () => {
     setIsOpen(false);
+    setOpenDropdown(null);
+  };
+
+  const handleDropdownToggle = (label) => {
+    setOpenDropdown(openDropdown === label ? null : label);
   };
 
   return (
-    // 【修正①】ヘッダーに固定の高さを設定 (h-20 は 80px)
     <header className="fixed top-0 left-0 z-50 w-full p-4 flex justify-between items-center bg-white shadow-md h-20">
       <Link href="/" onClick={closeMenu} className="flex-shrink-0">
         <Image src="/images/matsuoka_logo.jpg" alt="ロゴ" width={160} height={40} priority />
       </Link>
 
-      {/* ハンバーガーメニューボタン (スマホ・タブレットでのみ表示) */}
+      {/* --- ハンバーガーメニューボタン --- */}
       <button onClick={toggleMenu} className="z-50 space-y-2 md:hidden">
-        <span
-          className={`block w-8 h-0.5 bg-gray-600 transition-transform duration-300 ${
-            isOpen ? 'rotate-45 translate-y-2.5' : ''
-          }`}
-        ></span>
-        <span
-          className={`block w-8 h-0.5 bg-gray-600 transition-opacity duration-300 ${
-            isOpen ? 'opacity-0' : ''
-          }`}
-        ></span>
-        <span
-          className={`block w-8 h-0.5 bg-gray-600 transition-transform duration-300 ${
-            isOpen ? '-rotate-45 -translate-y-2.5' : ''
-          }`}
-        ></span>
+        <span className={`block w-8 h-0.5 bg-gray-600 transition-transform duration-300 ${isOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
+        <span className={`block w-8 h-0.5 bg-gray-600 transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+        <span className={`block w-8 h-0.5 bg-gray-600 transition-transform duration-300 ${isOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
       </button>
 
-      {/* ナビゲーションメニュー (スマホ・タブレット用) */}
-      <nav 
-        className={`fixed left-0 z-40 w-full bg-white shadow-lg transition-all duration-300 ease-in-out md:hidden flex items-center justify-center ${
-          // 表示位置とアニメーションを変更
-          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'
-        }`}
-        //  ヘッダーの真下に配置し、高さを設定
-        style={{ top: '80px', height: '20vh' }}
+      {/* --- スマホ・タブレット用ナビゲーション --- */}
+      <nav
+        className={`fixed top-20 left-0 z-40 w-full bg-white shadow-lg transition-all duration-300 ease-in-out md:hidden ${
+          isOpen ? 'max-h-screen' : 'max-h-0'
+        } overflow-y-auto`}
       >
-        <ul className="flex flex-wrap justify-center gap-x-6 gap-y-4 text-lg">
+        <ul className="flex flex-col items-center">
           {navItems.map((item) => (
-            <li key={item.href}>
-              <Link 
-                href={item.href} 
-                onClick={closeMenu}
-                className="inline-block transition-transform duration-300 ease-in-out hover:scale-110"
-              >
-                {item.label}
-              </Link>
+            <li key={item.label} className="w-full text-center border-b">
+              {item.subItems ? (
+                <div>
+                  <button onClick={() => handleDropdownToggle(item.label)} className="w-full py-4 flex justify-center items-center font-medium">
+                    {item.label}
+                    <ChevronDownIcon className={`w-4 h-4 ml-2 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />
+                  </button>
+                  {openDropdown === item.label && (
+                    <ul className="bg-gray-50">
+                      {item.subItems.map((subItem) => (
+                        <li key={subItem.href} className="border-t">
+                          <Link href={subItem.href} onClick={closeMenu} className="block py-3 text-gray-600">
+                            {subItem.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ) : (
+                <Link href={item.href || ''} onClick={closeMenu} className="block py-4 font-medium">
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
       </nav>
 
-      {/* ナビゲーションメニュー (PC用: 常時表示) */}
+      {/* --- PC用ナビゲーション --- */}
       <nav className="hidden md:block">
         <ul className="flex space-x-8 text-base">
           {navItems.map((item) => (
-            <li key={item.href}>
-              <Link 
-                href={item.href}
-                className="inline-block transition-transform duration-300 ease-in-out hover:scale-110"
-              >
-                {item.label}
-              </Link>
+            <li key={item.label} className="relative group">
+              {item.subItems ? (
+                <>
+                  <div className="flex items-center cursor-default font-medium">
+                    {item.label}
+                    <ChevronDownIcon className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" />
+                  </div>
+                  <ul className="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white shadow-lg rounded-md mt-2 py-2 w-48">
+                    {item.subItems.map((subItem) => (
+                      <li key={subItem.href}>
+                        <Link href={subItem.href} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                          {subItem.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <Link href={item.href || ''} className="inline-block transition-transform duration-300 ease-in-out hover:scale-110 font-medium">
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

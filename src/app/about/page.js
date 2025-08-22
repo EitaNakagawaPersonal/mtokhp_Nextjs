@@ -1,13 +1,18 @@
-import Header from '@/components/Header';
+import CompanyOverview from './components/CompanyOverview';
+import Concept from './components/Concept';
+import Features from './components/Features';
+import History from './components/History';
+import OfficerIntroduction from './components/OfficerIntroduction';
 
-export default function Business() {
+export default function About() {
   return (
     <>
-      <Header />
       <main>
-        <h1 className="text-center text-3xl font-bold pt-32 pb-16 text-gray-800">
-            会社概要
-        </h1>
+        <Concept />
+        <Features />
+        <CompanyOverview />
+        <History /> 
+        <OfficerIntroduction />
       </main>
     </>
   );

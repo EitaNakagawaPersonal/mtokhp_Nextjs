@@ -6,10 +6,11 @@ import Link from 'next/link';
 
 const navItems = [
   { href: "/", label: "ホーム" },
-  { href: "/about", label: "会社概要" },
-  { href: "/business", label: "事業内容" },
+  { href: "/about", label: "企業情報" },
+  { href: "/business", label: "事業部" },
   { href: "/recruit", label: "採用情報" },
-  { href: "/contact", label: "お問い合わせ" },
+  { href: "/forest", label: "Forest オンライン店舗" },
+  { href: "/#contact", label: "お問い合わせ" },
 ];
 
 export default function Header() {

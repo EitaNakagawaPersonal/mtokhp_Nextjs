@@ -64,7 +64,7 @@ export default function Contact() {
           {/* Googleマップ */}
           <div className="w-full h-[400px] mb-12 rounded-lg overflow-hidden">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3340.5833215535546!2d131.8841986763456!3d33.14695537351185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3546a6b281f6c46b%3A0x633d7db2724ee627!2z77yI5qCq77yJ44Oe44OE44Km44Jq!5e0!3m2!1sja!2sjp!4v1724226526148!5m2!1sja!2sjp"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13389.977306717918!2d131.90600916776606!3d32.96435768064325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354689d6ec46aa49%3A0xddd8c38f23a290!2z44CSODc2LTA4MjIg5aSn5YiG55yM5L2Q5Lyv5biC6KW_5rWc77yS4oiS77yT77yZ!5e0!3m2!1sja!2sjp!4v1755842585510!5m2!1sja!2sjp"
               width="100%"
               height="100%"
               style={{ border: 0 }}

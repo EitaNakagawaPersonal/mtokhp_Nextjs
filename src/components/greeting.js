@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 
 export default function Greeting() {
-  const greetingImage = "/images/greeting.png";
+  // const greetingImage = "/images/greeting.png";
   const title = "ご挨拶";
   const message = `
 弊社は1955年から全国のお客様に建築・土木材をお届けしてきました。
@@ -28,7 +28,7 @@ export default function Greeting() {
     <section ref={ref} className="relative w-full h-[70vh] min-h-[600px] overflow-hidden">
       {/* 背景画像 */}
       <Image
-        src={greetingImage}
+        src="/images/greeting.png"
         alt="社長挨拶の背景"
         fill
         style={{ objectFit: 'cover' }}

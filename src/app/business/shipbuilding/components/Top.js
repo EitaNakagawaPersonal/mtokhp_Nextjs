@@ -10,12 +10,13 @@ const shipbuildingData = {
         "サイズ、穴あけ等に関して特殊加工が可能であり、",
         "木材・鉄材・コンクリ材まで幅広く扱っていることが弊社の強みです。"
     ]
-  };
+};
 
 export default function Top() {
     return (
         <section className="font-serif-jp">
-            <div className="grid md:grid-cols-2 min-h-screen">
+            {/* 親コンテナの高さを画面の60%に（PC時） */}
+            <div className="grid md:grid-cols-2 min-h-[50vh] md:min-h-[60vh]">
 
                 {/* 左カラム: テキスト */}
                 <div className="bg-[#00305b] text-white p-15 flex flex-col justify-center">
@@ -27,7 +28,7 @@ export default function Top() {
                         <div className="space-y-4">
                             {shipbuildingData.description.map((paragraph, index) => (
                                 <p key={index} className="leading-relaxed text-lg">
-                                {paragraph}
+                                    {paragraph}
                                 </p>
                             ))}
                         </div>
@@ -35,7 +36,7 @@ export default function Top() {
                 </div>
 
                 {/* 右カラム: 画像 */}
-                <div className="relative min-h-[50vh] md:min-h-screen">
+                <div className="relative min-h-[50vh] md:min-h-[60vh]">
                     <Image 
                         src="/images/shipbuilding-main.jpg"
                         alt="造船資材イメージ" 

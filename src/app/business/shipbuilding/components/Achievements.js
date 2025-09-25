@@ -23,7 +23,7 @@ export default function Achievements() {
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 underline">納入実績</h2>
 
             {/* Swiperスライダー */}
-            <div className="max-w-5xl mx-auto mb-24">
+            <div className="max-w-5xl mx-auto mb-26">
                 <Swiper
                     modules={[Navigation, Pagination]} // 左右の矢印と下の点々(ページネーション)を有効にする
                     navigation // 左右の矢印を表示

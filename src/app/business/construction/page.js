@@ -1,12 +1,14 @@
+import Top from './components/Top';
+import ProductIntroduction from './components/ProductIntroduction';
+
 export default function Construction() {
     return (
-        <div style={{ color: 'black' }}>
-            <h1>建築資材事業</h1>
-            <p>このページは現在準備中です。</p>
-            <p>このページは現在準備中です。</p>
-            <p>このページは現在準備中です。</p>
-            <p>このページは現在準備中です。</p>
-            <p>建築資材事業は現在準備中です。</p>
-        </div>
+        <div className="relative bg-[url('/images/sea.png')] bg-cover bg-center bg-fixed">
+                    <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
+                    <main className="relative">
+                        <Top />
+                        <ProductIntroduction />
+                    </main>
+                </div>
     );
 }

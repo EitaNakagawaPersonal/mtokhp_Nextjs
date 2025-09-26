@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js プロジェクトへようこそ！
 
-## Getting Started
+「create-next-app」というコマンドで最初のひな形を作成しました。
+Next.js は React をベースにしたフレームワークで、画面表示が速くなったり、
+SEO（検索エンジンに強い）対応がしやすくなるのが特徴です。
 
-First, run the development server:
+## 開発を始める手順
+
+まず開発サーバーを起動します。
+（ターミナルで以下のコマンドを実行）
 
 ```bash
 npm run dev
-# or
+# または
 yarn dev
-# or
+# または
 pnpm dev
-# or
+# または
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+起動したら、ブラウザで以下を開きましょう
+ http://localhost:3000
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+→ これでアプリが動いているのを確認できます。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+表示されるページは app/page.js を編集すると内容が変わります。
+保存すると自動的にブラウザに反映されます。
 
-## Learn More
+## フォントについて
 
-To learn more about Next.js, take a look at the following resources:
+このプロジェクトでは next/font
+ という仕組みを使って、Vercel が作った新しいフォント Geist を自動で読み込んでいます。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+→ フォントを自分でダウンロードしたり設定する必要がなく、きれいな文字がすぐに使えます。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## もっと学びたい人へ
 
-## Deploy on Vercel
+Next.js ドキュメント(https://nextjs.org/docs)
+→ 機能やAPIの説明が載っています。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Learn Next.js チュートリアル(https://nextjs.org/learn)
+→ 実際に手を動かしながら学べる入門教材です。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js GitHub リポジトリ(https://github.com/vercel/next.js)
+→ ソースコードや開発の進捗を見られます。
+
+## デプロイ（公開）方法
+
+作ったアプリをインターネット上に公開する一番簡単な方法は、Next.js を作った会社 Vercel のサービスを使うことです。
+
+👉 Vercel で新しいプロジェクトを作成
+
+詳しくは公式の デプロイ方法ガイド
+ をご覧ください。
+
+💡 仕組みのイメージ（例え）
+
+Next.js を「レストランのキッチン」に例えるとわかりやすいです。
+
+React：料理を作るシェフ
+
+Next.js：料理を効率よく出すための仕組み（キッチンの導線や注文管理）
+
+Vercel：お店を用意して料理をお客さん（ユーザー）に届けるサービス
+
+React だけでも料理は作れるけど、Next.js を使うと効率よくスピーディーにお客さんへ届けられる、という感じです。

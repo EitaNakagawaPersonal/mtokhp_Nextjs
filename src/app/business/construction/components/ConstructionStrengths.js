@@ -40,10 +40,10 @@ export default function ConstructionStrengths() {
                                     <div className="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto">
                                         {strength.icon}
                                     </div>
-                                    <h3 className="mt-5 text-xl font-bold text-gray-900">{strength.title}</h3>
+                                    <h3 className="mt-5 text-xl sm:text-lg font-bold text-gray-900">{strength.title}</h3>
                                 </div>
                                 <div className="mt-2 flex-grow">
-                                    <p className="text-base text-gray-600 text-center">{strength.description}</p>
+                                    <p className="text-sm sm:text-base text-gray-600 text-center">{strength.description}</p>
                                 </div>
                             </div>
                         ))}

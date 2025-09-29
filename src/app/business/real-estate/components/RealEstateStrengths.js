@@ -5,12 +5,28 @@ const strengths = [
     {
         icon: <FaHandshake className="h-12 w-12 text-blue-800" />,
         title: '創業70年の信頼と地域密着',
-        description: '大分県を中心に創業70年。長年培った信頼と知識を基に、常にお客様目線の情報提供を徹底しています。',
+        description: (
+            <>
+                大分県を中心に創業70年。
+                <br />
+                長年培った信頼と知識を基に、
+                <br />
+                常にお客様目線の情報提供を徹底しています。
+            </>
+        ),
     },
     {
         icon: <FaGlobe className="h-12 w-12 text-blue-800" />,
         title: '多言語対応（英語・韓国語）',
-        description: '英語・韓国語での対応が可能です。海外のお客様でも、言語の壁なく安心してご相談いただけます。',
+        description: (
+            <>
+                英語・韓国語での対応が可能です。
+                <br />
+                海外のお客様でも、
+                <br />
+                言語の壁なく安心してご相談いただけます。
+            </>
+        ),
     },
 ];
 
@@ -40,7 +56,7 @@ export default function RealEstateStrengths() {
                                     <h3 className="mt-5 text-xl font-bold text-gray-900">{strength.title}</h3>
                                 </div>
                                 <div className="mt-2 flex-grow">
-                                    <p className="text-base text-gray-600 text-left">{strength.description}</p>
+                                    <p className="text-sm sm:text-base text-gray-600 text-center">{strength.description}</p>
                                 </div>
                             </div>
                         ))}

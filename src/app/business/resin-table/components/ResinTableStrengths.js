@@ -57,7 +57,7 @@ export default function ResinTableStrengths() {
                                     <h3 className="mt-5 text-xl font-bold text-gray-900">{strength.title}</h3>
                                 </div>
                                 <div className="mt-2 flex-grow">
-                                    <p className="text-base text-gray-600 text-center">{strength.description}</p>
+                                    <p className="text-sm sm:text-base text-gray-600 text-center">{strength.description}</p>
                                 </div>
                             </div>
                         ))}

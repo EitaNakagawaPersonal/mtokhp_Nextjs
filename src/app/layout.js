@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} antialiased`}
       >
         <Header />
-        {children}
+        <main className="pt-20">{children}</main>
         <InstagramButton />
       </body>
     </html>

@@ -1,4 +1,5 @@
 import Top from './components/Top';
+import ConstructionStrengths from './components/ConstructionStrengths';
 import ProductIntroduction from './components/ProductIntroduction';
 
 export default function Construction() {
@@ -7,6 +8,7 @@ export default function Construction() {
                     <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
                     <main className="relative">
                         <Top />
+                        <ConstructionStrengths />
                         <ProductIntroduction />
                     </main>
                 </div>

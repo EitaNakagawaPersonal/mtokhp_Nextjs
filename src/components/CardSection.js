@@ -37,7 +37,8 @@ export default function CardSection() {
             href={card.link}
             className="group block text-center transition-transform duration-300 ease-in-out hover:scale-105"
           >
-            <div className="relative w-full aspect-square overflow-hidden rounded-lg">
+            {/* <div className="relative w-full aspect-square overflow-hidden rounded-lg"> */}
+            <div className="relative w-full aspect-[4/2] sm:aspect-square overflow-hidden rounded-lg">
               <Image
                 src={card.imageUrl}
                 alt={card.title}

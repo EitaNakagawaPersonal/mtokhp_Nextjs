@@ -1,21 +1,49 @@
-import { CubeTransparentIcon, BuildingOffice2Icon, SparklesIcon } from '@heroicons/react/24/outline';
+import { FaTree } from 'react-icons/fa';
+import { MdFactory } from 'react-icons/md';
+import { BsStars } from 'react-icons/bs';
 
 // ご提供いただいた文章を3つの強みに分けてデータ化
 const strengths = [
     {
-        icon: <CubeTransparentIcon className="h-12 w-12 text-blue-800" />,
+        icon: <FaTree className="h-12 w-12 text-blue-800" />,
         title: '豊富な樹種の取り扱い',
-        description: 'アピトン、米松、杉など、大型船の建造にも対応した耐久性のある素材を各種取り揃えております。',
+        description: (
+            <>
+              アピトン、米松、杉など、
+              <br />
+              大型船の建造にも対応した耐久性のある素材を
+              <br />
+              各種取り揃えております。
+            </>
+        ),
     },
     {
-        icon: <BuildingOffice2Icon className="h-12 w-12 text-blue-800" />,
+        icon: <MdFactory className="h-12 w-12 text-blue-800" />,
         title: '関連製品の一貫製造',
-        description: '船の進水台やコンクリ盤木なども全て自社で製造。高品質な製品を安定して供給することが可能です。',
+        description: (
+            <>
+              船の進水台やコンクリ盤木なども
+              <br />
+              全て自社で製造。
+              <br />
+              高品質な製品を安定して供給が可能です。
+              <br />
+            </>
+        ),
     },
     {
-        icon: <SparklesIcon className="h-12 w-12 text-blue-800" />,
+        icon: <BsStars className="h-12 w-12 text-blue-800" />,
         title: '高級木甲板にも対応',
-        description: '意匠性が求められるクリやチークといった高級木材を使用した、特別な木甲板の製作も承っております。',
+        description: (
+            <>
+              意匠性が求められるクリやチークといった
+              <br />
+              高級木材を使用した、
+              <br />
+              特別な木甲板の製作も承っております。
+              <br />
+            </>
+        ), 
     },
 ];
 
@@ -45,7 +73,7 @@ export default function Strengths() {
                                     <h3 className="mt-5 text-xl font-bold text-gray-900">{strength.title}</h3>
                                 </div>
                                 <div className="mt-2 flex-grow">
-                                    <p className="text-base text-gray-600 text-left">{strength.description}</p>
+                                    <p className="text-base text-gray-600 text-center">{strength.description}</p>
                                 </div>
                             </div>
                         ))}

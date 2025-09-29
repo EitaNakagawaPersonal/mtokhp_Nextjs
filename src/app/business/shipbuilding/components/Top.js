@@ -16,9 +16,9 @@ export default function Top() {
     return (
         <section className="font-serif-jp">
             <div className="relative md:grid md:grid-cols-2 min-h-[50vh] md:min-h-[70vh]">
-                
                 {/* 背景画像 (順番は先に) */}
-                <div className="relative min-h-[50vh] md:min-h-[60vh]">
+                {/* <div className="relative min-h-[50vh] md:min-h-[60vh]"> */}
+                <div className="relative w-full h-80 md:h-full">
                     <Image 
                         src="/images/shipbuilding-main.jpg"
                         alt="造船資材イメージ" 

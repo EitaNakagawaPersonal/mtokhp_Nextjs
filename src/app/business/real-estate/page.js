@@ -1,12 +1,14 @@
+import RealEstateStrengths from "./components/RealEstateStrengths";
+
 export default function RealEstate() {
     return (
-        <div style={{ color: 'black' }}>
-            <h1>不動産事業</h1>
-            <p>このページは現在準備中です。</p>
-            <p>このページは現在準備中です。</p>
-            <p>このページは現在準備中です。</p>
-            <p>このページは現在準備中です。</p>
-            <p>不動産事業は現在準備中です。</p>
-        </div>
+        <div className="relative bg-[url('/images/sea.png')] bg-cover bg-center bg-fixed">
+                    <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
+                    <main className="relative">
+                        {/* <Top /> */}
+                        <RealEstateStrengths />
+                        {/* <ProductIntroduction /> */}
+                    </main>
+                </div>
     );
 }

@@ -20,7 +20,12 @@ export default function Achievements() {
 
     return (
         <section className="w-full py-16 px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 underline">納入実績</h2>
+            <div className="text-center">
+                <h2 className="text-base font-semibold text-blue-800 tracking-wider uppercase">Delivery Record</h2>
+                <p className="mt-2 text-3xl font-extrabold pb-10 text-gray-900 tracking-tight sm:text-4xl">
+                    納入実績
+                </p>
+            </div>
 
             {/* Swiperスライダー */}
             <div className="max-w-5xl mx-auto mb-26">

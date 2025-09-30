@@ -31,9 +31,12 @@ export default function ProductGallery() {
   return (
     <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800">
-          製品紹介
-        </h2>
+        <div className="text-center">
+          <h2 className="text-base font-semibold text-blue-800 tracking-wider uppercase">Products</h2>
+          <p className="mt-2 text-3xl font-extrabold pb-10 text-gray-900 tracking-tight sm:text-4xl">
+              製品紹介
+          </p>
+      </div>
 
         {/* --- メインのスライダー --- */}
         <Swiper

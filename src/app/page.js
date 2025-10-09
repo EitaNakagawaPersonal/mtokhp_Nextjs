@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import CardSection from '@/components/CardSection';
 import Greeting from '@/components/greeting';
+import Resin from '@/components/resin';
 import Contact from '@/components/Contact';
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
       <main>
         <Hero />
         <CardSection />
-        <Greeting />
+        <Resin />
         <Contact />
       </main>
     </>

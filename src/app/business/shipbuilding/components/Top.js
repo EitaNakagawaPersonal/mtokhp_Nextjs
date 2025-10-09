@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+//トップ画面のテキスト
 const shipbuildingData = {
   title: "木材事業部 造船資材課",
   description: [
@@ -11,6 +12,7 @@ const shipbuildingData = {
     "木材・鉄材・コンクリ材まで幅広く扱っていることが弊社の強みです。"
   ]
 };
+
 
 export default function Top() {
   return (

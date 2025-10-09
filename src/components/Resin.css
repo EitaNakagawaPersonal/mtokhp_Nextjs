@@ -1,0 +1,34 @@
+/* 画像を重ねて表示するためのラッパー（親要素） */
+.resin-image-wrapper {
+  position: relative;
+  width: 100%;
+  /* コンテナの縦横比を16:9に設定 */
+  aspect-ratio: 16 / 9;
+  overflow: hidden; /* はみ出した部分を隠す */
+  border-radius: 8px; /* 角を少し丸くする */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* 影を付けて立体感を出す */
+}
+
+/* 全ての画像の基本スタイル（アニメーションの「前」の状態） */
+.resin-img {
+  position: absolute; /* 親要素を基準に、画像を重ねて配置 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像の比率を保ったままコンテナ全体を覆う */
+
+  /* アニメーションの準備 */
+  opacity: 0; /* 最初は透明にして隠す */
+  transform: translateX(-20px) scale(1.1); /* 少し左にずらして、10%拡大した状態から開始 */
+  
+  /* アニメーションの設定 */
+  /* opacityとtransformが1.5秒かけて滑らかに変化するように指定 */
+  transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+/* 表示される画像に適用されるスタイル（アニメーションの「後」の状態） */
+.resin-img.active {
+  opacity: 1; /* 透明度を1にして表示する */
+  transform: translateX(0) scale(1); /* 元の位置とサイズに戻る */
+}

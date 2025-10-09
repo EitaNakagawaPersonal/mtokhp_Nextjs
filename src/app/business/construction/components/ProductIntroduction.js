@@ -38,13 +38,11 @@ export default function ProductGallery() {
           </p>
       </div>
 
-        {/* --- メインのスライダー --- */}
         <Swiper
           modules={[Navigation, Thumbs]}
           navigation
           loop={true}
           spaceBetween={10}
-          // 👇 ここでサムネイルSwiperと連携
           thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
           className="w-full rounded-lg shadow-lg"
         >

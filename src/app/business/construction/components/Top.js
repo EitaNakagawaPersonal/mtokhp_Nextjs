@@ -27,7 +27,8 @@ export default function Top() {
                         className="brightness-50" // 画像を少し暗くする
                     />
                     {/* テキストコンテンツ */}
-                    <div className="relative z-10 h-full flex flex-col justify-center text-white p-8 pt-20">
+                    {/* 変更箇所: pt-20を削除して中央揃えを正しく機能させる */}
+                    <div className="relative z-10 h-full flex flex-col justify-center text-white p-8">
                         <h2 className="text-4xl font-bold mb-8"> 
                             {constructionData.title}
                         </h2>

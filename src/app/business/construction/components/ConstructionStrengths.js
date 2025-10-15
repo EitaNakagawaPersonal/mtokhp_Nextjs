@@ -23,7 +23,7 @@ export default function ConstructionStrengths() {
                 <div className="text-center">
                     <h2 className="text-base font-semibold text-blue-800 tracking-wider uppercase">Our Strengths</h2>
                     <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-                        建築資材事業部の強み
+                        建築資材課の強み
                     </p>
                     <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-600">
                         資材調達のあらゆる手間を解消し、<br />

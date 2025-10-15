@@ -2,31 +2,21 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-
-// Swiper関連のインポート
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Thumbs } from 'swiper/modules';
-
-// Swiperの基本スタイルと、今回使う機能のスタイルをインポート
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
-// 表示する画像のデータ（実際の画像パスに差し替えてください）
 const galleryData = [
-  { id: 1, imageUrl: "/images/products/kitchen.jpg", alt: "キッチン" },
-  { id: 2, imageUrl: "/images/products/carport.jpg", alt: "カーポート" },
-  { id: 3, imageUrl: "/images/products/toilet.jpg", alt: "トイレ" },
-  { id: 4, imageUrl: "/images/products/bathroom.jpg", alt: "バスルーム" },
-  { id: 5, imageUrl: "/images/products/window.jpg", alt: "窓" },
-  { id: 6, imageUrl: "/images/products/floor.jpg", alt: "フローリング" },
-  { id: 7, imageUrl: "/images/products/bricks.jpg", alt: "壁材" },
-  { id: 8, imageUrl: "/images/products/storage.jpg", alt: "収納" },
+  { id: 1, imageUrl: "/images/products/residential-building.avif", alt: "住宅建築材 一式" },
+  { id: 2, imageUrl: "/images/products/civil-engineering.avif", alt: "土木用資材" },
+  { id: 3, imageUrl: "/images/products/pallets-and-packaging.avif", alt: "パレット・梱包資材" },
 ];
 
 export default function ProductGallery() {
-  // サムネイル用のSwiperインスタンスをstateで管理
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [activeSlideTitle, setActiveSlideTitle] = useState(galleryData[0].alt);
 
   return (
     <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
@@ -36,14 +26,18 @@ export default function ProductGallery() {
           <p className="mt-2 text-3xl font-extrabold pb-10 text-gray-900 tracking-tight sm:text-4xl">
               製品紹介
           </p>
-      </div>
+        </div>
 
+        {/* --- メインのスライダー --- */}
         <Swiper
           modules={[Navigation, Thumbs]}
           navigation
           loop={true}
           spaceBetween={10}
           thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+          onSlideChange={(swiper) => {
+            setActiveSlideTitle(galleryData[swiper.realIndex].alt);
+          }}
           className="w-full rounded-lg shadow-lg"
         >
           {galleryData.map((item) => (
@@ -60,27 +54,35 @@ export default function ProductGallery() {
           ))}
         </Swiper>
 
+        <h3 className="mt-4 text-center text-xl font-semibold text-gray-800">
+          {activeSlideTitle}
+        </h3>
+
         {/* --- サムネイル用のスライダー --- */}
         <Swiper
           modules={[Thumbs]}
-          // 👇 このスライダーのインスタンスをstateに保存
           onSwiper={setThumbsSwiper}
           loop={true}
           spaceBetween={10}
-          slidesPerView={5} // 表示するサムネイルの数
+          slidesPerView={3} // 表示枚数を3枚に変更
           watchSlidesProgress={true}
           className="mt-4"
         >
           {galleryData.map((item) => (
             <SwiperSlide key={item.id} className="cursor-pointer opacity-50 hover:opacity-100 transition-opacity">
-              <div className="relative w-full aspect-square">
-                 <Image
-                  src={item.imageUrl}
-                  alt={item.alt}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="rounded-md"
-                />
+              {/* 👇 画像とテキストをまとめるdivを追加 */}
+              <div className="text-center">
+                <div className="relative w-full aspect-square">
+                   <Image
+                    src={item.imageUrl}
+                    alt={item.alt}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    className="rounded-md"
+                  />
+                </div>
+                {/* 👇 画像の下に題名を追加 */}
+                <p className="mt-2 text-sm text-gray-700 truncate">{item.alt}</p>
               </div>
             </SwiperSlide>
           ))}

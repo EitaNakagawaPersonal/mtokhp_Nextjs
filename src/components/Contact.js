@@ -69,7 +69,7 @@ export default function Contact() {
           {/* 👇 onSubmitイベントハンドラを追加 */}
           <form 
             onSubmit={handleSubmit}
-            action="https://formspree.io/f/mqawzjyp" 
+            action="https://formspree.io/f/mqawzoaz" 
             method="POST" 
             className="space-y-4"
           >
@@ -92,7 +92,6 @@ export default function Contact() {
             </div>
             
             <div className="text-center">
-              {/* 👇 送信中はボタンを無効化 */}
               <button 
                 type="submit" 
                 className="px-8 py-3 bg-transparent border border-white text-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 disabled:opacity-50"
@@ -101,7 +100,6 @@ export default function Contact() {
                 {status === '送信中...' ? '送信中...' : '送信する'}
               </button>
             </div>
-            {/* 👇 送信ステータスを表示するメッセージ */}
             {status && <p className="text-white text-center mt-4">{status}</p>}
           </form>
         </div>

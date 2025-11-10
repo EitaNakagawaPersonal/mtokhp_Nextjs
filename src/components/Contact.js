@@ -1,5 +1,39 @@
+"use client"; // 👈 stateやイベントを扱うため、必ず先頭に記述
+import { useState } from 'react'; // 👈 state管理のためにimport
+
 export default function Contact() {
-  const contactVideo = "/videos/contact_video.mp4"; // 動画のパス
+  const contactVideo = "/videos/contact_video.mp4";
+  
+  // フォームの送信状態を管理するためのstate
+  const [status, setStatus] = useState('');
+
+  // フォームが送信されたときの処理
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // 👈 フォームのデフォルト送信（画面遷移）をキャンセル
+    setStatus('送信中...');
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json' // 👈 FormspreeにJSONで応答するように要求
+        }
+      });
+
+      if (response.ok) {
+        setStatus('送信しました。ありがとうございます！');
+        form.reset(); // フォームをリセット
+      } else {
+        setStatus('送信に失敗しました。もう一度お試しください。');
+      }
+    } catch (error) {
+      setStatus('送信エラーが発生しました。');
+    }
+  };
 
   return (
     <section id="contact" className="relative w-full overflow-hidden">
@@ -32,7 +66,14 @@ export default function Contact() {
           </div>
 
           {/* 右側: フォーム本体 */}
-          <form action="https://formspree.io/f/mqawzjyp" method="POST" className="space-y-4">
+          {/* 👇 onSubmitイベントハンドラを追加 */}
+          <form 
+            onSubmit={handleSubmit}
+            action="https://formspree.io/f/mqawzjyp" 
+            method="POST" 
+            className="space-y-4"
+          >
+            {/* ... (input, labelタグは変更なし) ... */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-1">氏名/法人名 *</label>
               <input type="text" id="name" name="name" required className="w-full p-3 border border-gray-500 bg-white/10 text-white rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
@@ -49,18 +90,24 @@ export default function Contact() {
               <label htmlFor="message" className="block text-sm font-medium text-gray-200 mb-1">お問い合わせ内容</label>
               <textarea id="message" name="message" rows={6} className="w-full p-3 border border-gray-500 bg-white/10 text-white rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
             </div>
+            
             <div className="text-center">
-              <button type="submit" className="px-8 py-3 bg-transparent border border-white text-white rounded-full hover:bg-white hover:text-black transition-colors duration-300">
-                送信する
+              {/* 👇 送信中はボタンを無効化 */}
+              <button 
+                type="submit" 
+                className="px-8 py-3 bg-transparent border border-white text-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 disabled:opacity-50"
+                disabled={status === '送信中...'}
+              >
+                {status === '送信中...' ? '送信中...' : '送信する'}
               </button>
             </div>
+            {/* 👇 送信ステータスを表示するメッセージ */}
+            {status && <p className="text-white text-center mt-4">{status}</p>}
           </form>
         </div>
 
         {/* --- 下部: マップと住所 --- */}
-        <div>
-          {/* ... (マップと住所のコードは変更なし) ... */}
-        </div>
+        {/* ... (変更なし) ... */}
       </div>
     </section>
   );

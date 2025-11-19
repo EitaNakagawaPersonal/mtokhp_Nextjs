@@ -7,16 +7,9 @@ export default function InstagramFeed() {
         <h2 className="text-center text-3xl font-bold mb-12 font-serif-jp">
           Instagram
         </h2>
-        
-        <div 
-          className="elfsight-app-YOUR_APP_ID" 
-          data-elfsight-app-lazy 
-        />
-        
-        <Script 
-          src="https://static.elfsight.com/platform/platform.js" 
-          strategy="lazyOnload" 
-        />
+
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-3049ca9e-a256-48fd-a7e7-c3e81a8a15d5" data-elfsight-app-lazy></div>
       </div>
     </section>
   );

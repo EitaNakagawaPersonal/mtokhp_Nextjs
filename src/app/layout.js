@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
         {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics />}
         <Header />
         <main className="pt-20">{children}</main>
-        <InstagramButton />
+        {/* <InstagramButton /> */}
       </body>
     </html>
   );

@@ -76,8 +76,8 @@ export default function Header() {
                   </button>
                   {openDropdown === item.label && (
                     <ul className="bg-gray-50">
-                      {item.subItems.map((subItem) => (
-                        <li key={subItem.href} className="border-t">
+                      {item.subItems.map((subItem, index) => (
+                          <li key={`${subItem.href}-${index}`} className="border-t">
                           <Link href={subItem.href} onClick={closeMenu} className="block py-3 text-gray-600">
                             {subItem.label}
                           </Link>
@@ -108,8 +108,8 @@ export default function Header() {
                     <ChevronDownIcon className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" />
                   </div>
                   <ul className="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white shadow-lg rounded-md mt-2 py-2 w-48">
-                    {item.subItems.map((subItem) => (
-                      <li key={subItem.href}>
+                    {item.subItems.map((subItem, index) => (
+                        <li key={`${subItem.href}-${index}`}>
                         <Link href={subItem.href} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                           {subItem.label}
                         </Link>

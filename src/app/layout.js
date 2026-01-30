@@ -2,7 +2,7 @@ import { Geist, Geist_Mono, Noto_Serif_JP, Inter } from "next/font/google";
 import "./globals.css";
 import InstagramButton from "@/components/InstagramButton";
 import Header from "@/components/Header";
-import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const inter = Inter({ subsets: ["latin"] });
 

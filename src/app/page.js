@@ -13,8 +13,8 @@ export default function Home() {
         <Hero />
         <CardSection />
         <Resin />
-        <Contact />
         <InstagramFeed />
+        <Contact />
       </main>
     </>
   );

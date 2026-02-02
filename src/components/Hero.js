@@ -43,7 +43,7 @@ export default function Hero() {
           className="text-white text-3xl md:text-4xl font-normal whitespace-nowrap font-serif-jp"
           style={{ textShadow: '0px 2px 4px rgba(0, 0, 0, 0.5)' }}
         >
-          木と良い関係を目指して
+          人と木の良い関係を目指して
         </h1>
       </div>
 

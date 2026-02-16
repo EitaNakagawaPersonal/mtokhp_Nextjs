@@ -15,66 +15,33 @@ const companyDetails = [
 
 export default function CompanyOverview() {
   return (
-    // font-serif-jp でセクション全体のフォントを明朝体に変更
-    <section className="font-serif-jp">
-      
-      {/* --- 1. スローガンセクション --- */}
-      <div className="relative h-64 sm:h-80 flex items-center justify-center text-white">
-        {/* 背景画像 */}
-        <Image
-          src="/images/wood-bg.jpg" // 背景用の木材画像を public/images に配置
-          alt="背景の木材"
-          layout="fill"
-          objectFit="cover"
-          className="z-0"
-        />
-        {/* 半透明の黒いオーバーレイ */}
-        <div className="absolute inset-0 bg-black/50"></div>
-        {/* テキスト */}
-        <h2 className="relative z-10 text-3xl sm:text-4xl md:text-5xl tracking-widest soft-reveal soft-reveal--d200">
-          人と木の良い関係を目指して
-        </h2>
+    // フルブリード背景画像 + ダークオーバーレイで強い区切りを作る
+    <section className="relative font-serif-jp w-full">
+      <div className="absolute inset-0 z-0">
+        <Image src="/images/sagyochu.jpg" alt="作業風景" fill className="object-cover" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* --- 2. 会社概要詳細セクション --- */}
-      {/* mdサイズ以上で2カラムのグリッドレイアウトに */}
-      <div className="grid md:grid-cols-2">
-        {/* 左カラム: 画像 */}
-        <div className="relative h-96 md:h-auto">
-          <Image
-            src="/images/forest-logs.jpg" // 森と丸太の画像を public/images に配置
-            alt="森と丸太"
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="bg-transparent">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* 左: テキスト */}
+            <div className="text-white">
+              <h3 className="text-5xl font-bold mb-6">会社概要</h3>
+              <dl className="space-y-4 text-lg opacity-95 leading-relaxed">
+                {companyDetails.map((item) => (
+                  <div key={item.term} className="flex items-start border-b py-3 text-sm">
+                    <dt className="w-36 flex-shrink-0 font-semibold pr-4">{item.term}</dt>
+                    <dd className="flex-1 break-words whitespace-normal">{item.description}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
 
-        {/* 右カラム: 会社情報 */}
-        <div className="relative p-8 sm:p-12 text-gray-800">
-          {/* 背景画像 (半透明にする親要素) */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/log-pile-bg.jpg" // 丸太の背景画像を public/images に配置
-              alt="丸太の背景"
-              layout="fill"
-              objectFit="cover"
-              className="opacity-20" // 画像自体の透明度を調整
-            />
-            {/* 白いオーバーレイ */}
-            <div className="absolute inset-0 bg-white/80"></div>
-          </div>
-          
-          {/* テキストコンテンツ */}
-          <div className="relative z-10">
-            <h3 className="text-3xl font-bold mb-8">会社概要</h3>
-            <dl>
-              {companyDetails.map((item) => (
-                <div key={item.term} className="flex border-b py-3 text-sm">
-                  <dt className="w-1/4 font-semibold">{item.term}</dt>
-                  <dd className="w-3/4">{item.description}</dd>
-                </div>
-              ))}
-            </dl>
+            {/* 右: 補助情報（空白） - ロゴは削除 */}
+            <div className="flex justify-end md:justify-end">
+              {/* intentionally left blank for visual balance */}
+            </div>
           </div>
         </div>
       </div>

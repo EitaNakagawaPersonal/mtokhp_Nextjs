@@ -8,8 +8,8 @@ export default function About() {
   return (
     <>
       <main>
-        <Concept />
-        <Features />
+        {/* <Concept /> */}
+        {/* <Features /> */}
         <CompanyOverview />
         <History /> 
         <OfficerIntroduction />

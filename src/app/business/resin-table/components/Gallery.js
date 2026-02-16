@@ -26,11 +26,10 @@ const Gallery = () => {
               <Image
                 src={src}
                 alt={`ギャラリー画像 ${index + 1}`}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-lg shadow-lg"
-                />
-                </div>
+                fill
+                className="object-cover rounded-lg shadow-lg"
+              />
+            </div>
             ))}
         </div>
       </div>

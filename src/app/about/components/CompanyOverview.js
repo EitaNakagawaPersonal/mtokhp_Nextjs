@@ -30,9 +30,9 @@ export default function CompanyOverview() {
               <h3 className="text-5xl font-bold mb-6">会社概要</h3>
               <dl className="space-y-4 text-lg opacity-95 leading-relaxed">
                 {companyDetails.map((item) => (
-                  <div key={item.term} className="flex items-start border-b py-3 text-sm">
-                    <dt className="w-36 flex-shrink-0 font-semibold pr-4">{item.term}</dt>
-                    <dd className="flex-1 break-words whitespace-normal">{item.description}</dd>
+                  <div key={item.term} className="flex">
+                    <dt className="w-36 font-semibold">{item.term}</dt>
+                    <dd className="">{item.description}</dd>
                   </div>
                 ))}
               </dl>

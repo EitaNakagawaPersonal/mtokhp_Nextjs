@@ -6,9 +6,11 @@ export default function Recruit() {
   return (
     <>
       <main>
+        {/* 
         <Menu />
         <Merit />
         <Engage />
+        */}
       </main>
     </>
   );

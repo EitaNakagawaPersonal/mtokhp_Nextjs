@@ -17,7 +17,7 @@ const navItems = [
       { href: "/business/real-estate", label: "不動産事業" },
     ]
   },
-  { href: "/recruit", label: "採用情報" },
+  { href: "https://en-gage.net/pinehirose_saiyo/", label: "採用情報", external: true },
   {
     label: "Forest オンライン店舗",
     subItems: [
@@ -86,6 +86,10 @@ export default function Header() {
                     </ul>
                   )}
                 </div>
+              ) : item.external ? (
+                <a href={item.href} target="_blank" rel="noopener noreferrer" onClick={closeMenu} className="block py-4 font-medium">
+                  {item.label}
+                </a>
               ) : (
                 <Link href={item.href || ''} onClick={closeMenu} className="block py-4 font-medium">
                   {item.label}
@@ -117,6 +121,10 @@ export default function Header() {
                     ))}
                   </ul>
                 </>
+              ) : item.external ? (
+                <a href={item.href} target="_blank" rel="noopener noreferrer" className="inline-block transition-transform duration-300 ease-in-out hover:scale-110 font-medium">
+                  {item.label}
+                </a>
               ) : (
                 <Link href={item.href || ''} className="inline-block transition-transform duration-300 ease-in-out hover:scale-110 font-medium">
                   {item.label}

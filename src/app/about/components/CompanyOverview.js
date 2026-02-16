@@ -31,7 +31,7 @@ export default function CompanyOverview() {
         {/* 半透明の黒いオーバーレイ */}
         <div className="absolute inset-0 bg-black/50"></div>
         {/* テキスト */}
-        <h2 className="relative z-10 text-3xl sm:text-4xl md:text-5xl tracking-widest">
+        <h2 className="relative z-10 text-3xl sm:text-4xl md:text-5xl tracking-widest soft-reveal soft-reveal--d200">
           人と木の良い関係を目指して
         </h2>
       </div>

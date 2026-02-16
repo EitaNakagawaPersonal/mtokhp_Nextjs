@@ -24,3 +24,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes soft-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.soft-reveal {
+  opacity: 0;
+  animation: soft-reveal 1.8s ease-out forwards;
+  will-change: opacity, transform, filter;
+}
+
+.soft-reveal--d200 {
+  animation-delay: 200ms;
+}
+
+.soft-reveal--d400 {
+  animation-delay: 400ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soft-reveal,
+  .soft-reveal--d200,
+  .soft-reveal--d400 {
+    opacity: 1;
+    animation: none;
+    transform: none;
+    filter: none;
+  }
+}

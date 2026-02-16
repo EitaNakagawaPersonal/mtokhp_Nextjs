@@ -40,7 +40,7 @@ export default function Hero() {
       {/* 文字 */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center">
         <h1
-          className="text-white text-3xl md:text-4xl font-normal whitespace-nowrap font-serif-jp"
+          className="text-white text-3xl md:text-4xl font-normal whitespace-nowrap font-serif-jp soft-reveal soft-reveal--d200"
           style={{ textShadow: '0px 2px 4px rgba(0, 0, 0, 0.5)' }}
         >
           人と木の良い関係を目指して

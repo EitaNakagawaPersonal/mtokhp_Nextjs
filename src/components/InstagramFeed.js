@@ -1,4 +1,22 @@
+'use client';
+
 import Script from 'next/script';
+import dynamic from 'next/dynamic';
+
+const InstagramFeedContent = dynamic(
+  () => Promise.resolve(function InstagramFeedInner() {
+    return (
+      <>
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div
+          className="elfsight-app-3049ca9e-a256-48fd-a7e7-c3e81a8a15d5"
+          data-elfsight-app-lazy
+        ></div>
+      </>
+    );
+  }),
+  { ssr: false }
+);
 
 export default function InstagramFeed() {
   return (
@@ -8,11 +26,7 @@ export default function InstagramFeed() {
           Instagram
         </h2>
 
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div
-          className="elfsight-app-3049ca9e-a256-48fd-a7e7-c3e81a8a15d5"
-          data-elfsight-app-lazy
-        ></div>
+        <InstagramFeedContent />
       </div>
     </section>
   );

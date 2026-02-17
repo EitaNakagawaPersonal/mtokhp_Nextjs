@@ -2,11 +2,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 
 const images = [
-    '/images/resin1.jpg',
-    '/images/resin2.jpg',
-    '/images/resin3.jpg',
-    '/images/resin4.jpg',
-    '/images/resin5.jpg',
+    '/images/resin-table/resin1.jpg',
+    '/images/resin-table/resin2.jpg',
+    '/images/resin-table/resin3.jpg',
+    '/images/resin-table/resin4.jpg',
+    '/images/resin-table/resin5.jpg',
 ];
 
 const Resin = () => {

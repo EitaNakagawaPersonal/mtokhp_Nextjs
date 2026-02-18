@@ -11,3 +11,18 @@
     自動でインスタから引っ張ってくる方法はないか調査
 ・すべて完了したらVercelからAWS EC2に変更
 ・ドメイン周りの設定変更、Wixから移設かAWSで新しく発行するか聞く
+
+Docker 設定が開発向け
+Dockerfileがnpm run devで実行されているが、
+本番環境ではnpm run build && npm startを使う方が早い
+
+docker-compose.yml:12でNODE_ENV=developmentに設定されています
+本番ではNODE_ENV=productionにする
+
+next.config.mjs:3 で unoptimized: true が設定されています
+本番環境ではパフォーマンス最適化のため、有効にすべきです
+
+.envをMacに共有する
+
+【コミット】
+画像最適化をオフ、env.exampleを作成、問い合わせのエラーハンドリング追加

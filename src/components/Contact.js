@@ -1,5 +1,5 @@
-"use client"; // 👈 stateやイベントを扱うため、必ず先頭に記述
-import { useState } from 'react'; // 👈 state管理のためにimport
+"use client";
+import { useState } from 'react';
 
 export default function Contact() {
   const contactVideo = "/videos/contact_video.mp4";
@@ -9,29 +9,55 @@ export default function Contact() {
 
   // フォームが送信されたときの処理
   const handleSubmit = async (e) => {
-    e.preventDefault(); // 👈 フォームのデフォルト送信（画面遷移）をキャンセル
+    e.preventDefault(); // フォームのデフォルト送信（画面遷移）をキャンセル
     setStatus('送信中...');
 
     const form = e.target;
     const data = new FormData(form);
 
     try {
+      // タイムアウト設定を追加
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒
+
       const response = await fetch(form.action, {
         method: form.method,
         body: data,
         headers: {
-          'Accept': 'application/json' // 👈 FormspreeにJSONで応答するように要求
-        }
+          'Accept': 'application/json'
+        },
+        signal: controller.signal
       });
+
+      clearTimeout(timeoutId);
 
       if (response.ok) {
         setStatus('送信しました。ありがとうございます！');
-        form.reset(); // フォームをリセット
+        form.reset();
       } else {
-        setStatus('送信に失敗しました。もう一度お試しください。');
+        // ステータスコード別のエラーハンドリング
+        if (response.status === 400) {
+          setStatus('入力項目が不正です。もう一度確認してください。');
+        } else if (response.status === 429) {
+          setStatus('送信が多すぎます。しばらく後にお試しください。');
+        } else {
+          setStatus(`エラーが発生しました（${response.status}）。もう一度お試しください。`);
+        }
       }
     } catch (error) {
-      setStatus('送信エラーが発生しました。');
+      // タイムアウトエラー
+      if (error.name === 'AbortError') {
+        setStatus('送信がタイムアウトしました。通信環境を確認してください。');
+      }
+      // ネットワークエラー
+      else if (error instanceof TypeError) {
+        setStatus('ネットワーク接続がありません。接続を確認してください。');
+      }
+      // その他のエラー
+      else {
+        setStatus('予期しないエラーが発生しました。');
+        console.error('Contact form error:', error);
+      }
     }
   };
 
@@ -69,7 +95,7 @@ export default function Contact() {
           {/* 👇 onSubmitイベントハンドラを追加 */}
           <form 
             onSubmit={handleSubmit}
-            action="https://formspree.io/f/mqawzoaz" 
+            action={process.env.NEXT_PUBLIC_FORMSPREE_URL}  
             method="POST" 
             className="space-y-4"
           >

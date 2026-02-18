@@ -23,25 +23,17 @@ export default function Top() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="bg-transparent">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* 左: テキスト */}
-            <div className="text-white">
-              <h2 className="text-4xl sm:text-5xl font-bold mb-8">
-                {shipbuildingData.title}
-              </h2>
-              <div className="space-y-6 text-lg opacity-95 leading-relaxed">
-                {shipbuildingData.description.map((paragraph, index) => (
-                  <p key={index}>
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            {/* 右: 補助情報（空白） - ビジュアルバランス用 */}
-            <div className="flex justify-end md:justify-end">
-              {/* intentionally left blank for visual balance */}
+        <div className="min-h-[75vh] md:min-h-[60vh] flex flex-col justify-center text-white">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-8">
+              {shipbuildingData.title}
+            </h2>
+            <div className="space-y-6">
+              {shipbuildingData.description.map((paragraph, index) => (
+                <p key={index} className="leading-relaxed text-lg opacity-95">
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Noto_Serif_JP, Inter } from "next/font/google";
+import { Noto_Sans_JP, Noto_Serif_JP, Inter } from "next/font/google";
 import "./globals.css";
 import InstagramButton from "@/components/InstagramButton";
 import Header from "@/components/Header";
@@ -6,19 +6,16 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const inter = Inter({ subsets: ["latin"] });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const notoSans = Noto_Sans_JP({
+  weight: ["300", "400", "700"],
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-noto-sans-jp',
+  display: 'swap',
 });
 
 const notoSerif = Noto_Serif_JP({
-  subsets: ["latin"],
   weight: ["400", "700"],
+  subsets: ["latin"],
   variable: '--font-noto-serif-jp',
   display: 'swap',
 });
@@ -32,7 +29,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} antialiased`}
+        className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
       >
         {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics />}
         <Header />

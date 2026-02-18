@@ -1,5 +1,4 @@
 【することリスト】
-・トップのカードセクションを変更
 ・トップのヒーロー用動画をもらう
 ・もらってHero.jsに差し込む
     /home/t8s/MyDocker/mtok/mtokhp_Nextjs/src/components/Hero.js
@@ -12,17 +11,29 @@
 ・すべて完了したらVercelからAWS EC2に変更
 ・ドメイン周りの設定変更、Wixから移設かAWSで新しく発行するか聞く
 
-Docker 設定が開発向け
+Docker設定が開発向け
 Dockerfileがnpm run devで実行されているが、
 本番環境ではnpm run build && npm startを使う方が早い
 
 docker-compose.yml:12でNODE_ENV=developmentに設定されています
 本番ではNODE_ENV=productionにする
 
-next.config.mjs:3 で unoptimized: true が設定されています
-本番環境ではパフォーマンス最適化のため、有効にすべきです
-
 .envをMacに共有する
 
-【コミット】
-画像最適化をオフ、env.exampleを作成、問い合わせのエラーハンドリング追加
+【改善案】
+スクロール時の動的演出【優先度：高】
+現在：固定的な表示
+<strong>提案：</strong> react-intersection-observerとframer-motion（既にインストール済み）を使用
+パラレックス効果：スクロールに応じて背景画像が異なるスピードで動く
+スティッキーセクション：セクションのテキストが固定表示されながらスクロール
+段階的フェードイン：コンテンツが画面に入るたびに自動アニメーション
+
+```
+// 例：Gallery のホバーで拡大 + スクロール検出
+<motion.div
+  initial={{ opacity: 0, scale: 0.9 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  whileHover={{ scale: 1.05 }}
+  transition={{ duration: 0.3 }}
+>
+```

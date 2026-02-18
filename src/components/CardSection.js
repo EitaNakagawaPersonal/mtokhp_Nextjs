@@ -14,8 +14,8 @@ const cardData = [
   },
   {
     title: "レジンテーブル事業",
-    imageUrl: "/images/card_materials.jpg",
-    link: "/business/materials",
+    imageUrl: "/images/resin-table/resin2.jpg",
+    link: "/business/resin-table",
   },
   {
     title: "不動産事業",

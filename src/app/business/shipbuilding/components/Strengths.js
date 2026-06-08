@@ -56,9 +56,11 @@ export default function Strengths() {
                     <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
                         木材のプロフェッショナルとしての強み
                     </p>
-                    <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-600">
-                        多種多様な木材の知識と確かな技術力で、お客様の造船プロジェクトを強力にサポートします。
-                    </p>
+                    {/* <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-600 text-center">
+                        船台や盤木など国内トップシェアの製品力で、
+                        <br />
+                        全国の造船産業を支えます。
+                    </p> */}
                 </div>
 
                 <div className="mt-16">

@@ -8,12 +8,12 @@ const cardData = [
     link: "/business/shipbuilding",
   },
   {
-    title: "建築資材事業",
+    title: "住宅建材事業(建築木材・新建材)",
     imageUrl: "/images/card_construction.jpg",
     link: "/business/construction",
   },
   {
-    title: "レジンテーブル事業",
+    title: "素材倉庫“FOREST“",
     imageUrl: "/images/resin-table/resin2.jpg",
     link: "/business/resin-table",
   },

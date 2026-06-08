@@ -11,9 +11,9 @@ const navItems = [
   {
     label: "事業部",
     subItems: [
-      { href: "/business/construction", label: "建築資材事業" },
+      { href: "/business/construction", label: "住宅建材事業" },
       { href: "/business/shipbuilding", label: "造船資材事業" },
-      { href: "/business/resin-table", label: "レジンテーブル事業" },
+      { href: "/business/resin-table", label: "素材倉庫“FOREST“" },
       { href: "/business/real-estate", label: "不動産事業" },
     ]
   },

@@ -14,11 +14,11 @@ const Hero = () => {
           <div className="max-w-2xl">
             <h2 className="text-4xl sm:text-5xl font-bold mb-8">レジンテーブル事業</h2>
             <div className="space-y-6">
-              <p className="leading-relaxed text-lg opacity-95">木とレジンが織りなす、世界にひとつだけの美。</p>
-              <p className="leading-relaxed text-lg opacity-95">職人の感性と確かな技術が生み出す、唯一無二のレジンテーブル。</p>
+              <p className="leading-relaxed text-lg opacity-95">製材所として培った経験で、銘木の美しさを提案。</p>
+              {/* <p className="leading-relaxed text-lg opacity-95">職人の感性と確かな技術が生み出す、唯一無二のレジンテーブル。</p>
               <p className="leading-relaxed text-lg opacity-95">素材の魅力を最大限に引き出し、空間に新たな価値を創造します。</p>
               <p className="leading-relaxed text-lg opacity-95">暮らしやビジネスシーンに、上質な存在感を。</p>
-              <p className="leading-relaxed text-lg opacity-95">マツオカ建材のレジン事業部が、その想いをかたちにします。</p>
+              <p className="leading-relaxed text-lg opacity-95">マツオカ建材のレジン事業部が、その想いをかたちにします。</p> */}
             </div>
           </div>
         </div>

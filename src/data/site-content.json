@@ -1,0 +1,49 @@
+{
+  "resinTable": {
+    "heroImage": "/images/resin-table/resin1.jpg",
+    "galleryImages": [
+      "/images/uploads/1784295009796-5d83e6dd.JPG",
+      "/images/uploads/1784295017940-35e42a57.JPG",
+      "/images/uploads/1784295028065-64d9994a.JPG",
+      "/images/uploads/1784295047003-90e95abc.JPG",
+      "/images/uploads/1784295083168-7670a537.JPG",
+      "/images/uploads/1784295100413-5285e461.JPG",
+      "/images/uploads/1784294856636-078bbbfa.JPG",
+      "/images/uploads/1784295120322-e36a9eb6.JPG",
+      "/images/uploads/1784295131140-823ba2c1.JPG"
+    ]
+  },
+  "shipbuilding": {
+    "achievements": [
+      {
+        "title": "【函館ドック様】進水台トリガー",
+        "imageUrl": "/images/achievement1.png"
+      },
+      {
+        "title": "【某修繕ドック】特殊緩衝材",
+        "imageUrl": "/images/achievement2.png"
+      },
+      {
+        "title": "【佐伯重工業㈱様】ピンブロック・矢盤木",
+        "imageUrl": "/images/achievement3.png"
+      },
+      {
+        "title": "【㈱臼杵造船様 船台(ヘッド式)",
+        "imageUrl": "/images/achievement4.png"
+      }
+    ]
+  },
+  "news": {
+    "enabled": true,
+    "item": {
+      "date": "2026-07-17",
+      "title": "テストテストテスト",
+      "body": "テストテストテストテスト\r\n\r\nテストテストテストテスト\r\n\r\nテストテストテストテスト",
+      "url": "",
+      "hasImage": true,
+      "imageUrl": "/images/uploads/1784299038910-2b474620.png",
+      "startDate": "2026-07-14",
+      "endDate": "2026-07-30"
+    }
+  }
+}

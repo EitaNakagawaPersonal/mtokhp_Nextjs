@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
       >
-        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics />}
+        <GoogleAnalytics />
         <Header />
         <main className="pt-20">{children}</main>
         {/* <InstagramButton /> */}

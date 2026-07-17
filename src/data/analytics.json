@@ -1,0 +1,46 @@
+{
+  "pages": [
+    {
+      "path": "/",
+      "title": "トップページ",
+      "enabled": true,
+      "measurementId": ""
+    },
+    {
+      "path": "/about",
+      "title": "会社概要",
+      "enabled": true,
+      "measurementId": ""
+    },
+    {
+      "path": "/business/construction",
+      "title": "建設事業",
+      "enabled": true,
+      "measurementId": ""
+    },
+    {
+      "path": "/business/real-estate",
+      "title": "不動産事業",
+      "enabled": true,
+      "measurementId": ""
+    },
+    {
+      "path": "/business/resin-table",
+      "title": "レジンテーブル事業",
+      "enabled": true,
+      "measurementId": ""
+    },
+    {
+      "path": "/business/shipbuilding",
+      "title": "造船資材事業",
+      "enabled": true,
+      "measurementId": ""
+    },
+    {
+      "path": "/recruit",
+      "title": "採用情報",
+      "enabled": true,
+      "measurementId": ""
+    }
+  ]
+}

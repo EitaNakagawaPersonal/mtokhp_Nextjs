@@ -2,7 +2,7 @@
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[75vh] md:h-screen bg-black overflow-hidden">
+    <section className="relative w-full h-[70vh] md:h-[82vh] lg:h-[78vh] bg-black overflow-hidden">
 
       {/* 背景動画（16:9 アスペクト比を維持） */}
       <video

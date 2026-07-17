@@ -1,85 +1,90 @@
 "use client";
-import { useState } from 'react';
-import Image from 'next/image';
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { useState } from "react";
+import Image from "next/image";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 const productData = [
-    { title: "【コンクリート盤木】", imageUrl: "/images/1_concrete_bangi.jpg" },
-    { title: "【組盤木】", imageUrl: "/images/2_kumibangi.jpg" },
-    { title: "【進水台トリガー】", imageUrl: "/images/3_shinsuidaitrigger.jpg" },
-    { title: "【滑走台・浮力台】", imageUrl: "/images/4_kassoudaihuryokudai.jpg" },
-    { title: "【鋼製進水用台車】(引上げ船台)", imageUrl: "/images/5_hikiagehunedai.jpg" },
-    { title: "【R盤木】", imageUrl: "/images/6_rbangi.jpg" },
-    { title: "【矢盤木】", imageUrl: "/images/7_yabangi.jpg" },
-    { title: "【クッションボード】", imageUrl: "/images/8_cushionboard.jpg" },
-    { title: "【ピンブロック】", imageUrl: "/images/9_pinblock.jpg" },
+  { title: "【コンクリート盤木】", imageUrl: "/images/1_concrete_bangi.jpg" },
+  { title: "【組盤木】", imageUrl: "/images/2_kumibangi.jpg" },
+  { title: "【進水台トリガー】", imageUrl: "/images/3_shinsuidaitrigger.jpg" },
+  { title: "【滑走台・浮力台】", imageUrl: "/images/4_kassoudaihuryokudai.jpg" },
+  { title: "【鋼製進水用台車】(引上げ船台)", imageUrl: "/images/5_hikiagehunedai.jpg" },
+  { title: "【R盤木】", imageUrl: "/images/6_rbangi.jpg" },
+  { title: "【矢盤木】", imageUrl: "/images/7_yabangi.jpg" },
+  { title: "【クッションボード】", imageUrl: "/images/8_cushionboard.jpg" },
+  { title: "【ピンブロック】", imageUrl: "/images/9_pinblock.jpg" },
 ];
 
 export default function ProductIntroduction() {
-    const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
-    return (
-    <section className="w-full py-16 px-4 sm:px-6 lg:px-8">
-      <div className="text-center">
-          <h2 className="text-base font-semibold text-blue-800 tracking-wider uppercase">Products</h2>
-          <p className="mt-2 text-3xl font-extrabold pb-10 text-gray-900 tracking-tight sm:text-4xl">
-              製品紹介
+  return (
+    <section className="bg-gray-100 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-base font-semibold uppercase tracking-wider text-blue-800">Products</h2>
+          <p className="mt-2 pb-10 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            製品紹介
           </p>
-      </div>
-      
-      {/* カードグリッド */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {productData.map((card, index) => (
-          // <a>や<Link>ではなく、クリックイベントを持つ<button>に変更
-          <button 
-            key={index} 
-            onClick={() => setSelectedImage(card.imageUrl)} // クリックされた画像のURLをstateに保存
-            className="group block text-center transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none"
-          >
-            <div className="relative w-full aspect-square overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-shadow">
-              <Image
-                src={card.imageUrl}
-                alt={card.title}
-                fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-              {/* ホバー時に表示される「詳しく見る」のオーバーレイを追加 */}
-              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <p className="text-white font-bold">画像を拡大</p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+          {productData.map((card, index) => (
+            <button
+              key={`${card.title}-${index}`}
+              type="button"
+              onClick={() => setSelectedImage(card.imageUrl)}
+              className="group block overflow-hidden rounded-lg bg-white text-center shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+            >
+              <div className="relative aspect-square w-full overflow-hidden">
+                <Image
+                  src={card.imageUrl}
+                  alt={card.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <p className="font-bold text-white">画像を拡大</p>
+                </div>
               </div>
-            </div>
-            
-            <h3 className="mt-4 text-lg font-semibold text-gray-800">
-              {card.title}
-            </h3>
-          </button>
-        ))}
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-gray-800">{card.title}</h3>
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* --- ライトボックス（画像拡大表示） --- */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)} // 背景をクリックしても閉じる
+      {selectedImage ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-2 py-2 sm:px-4 sm:py-4"
+          onClick={() => setSelectedImage(null)}
         >
-          <div className="relative w-full max-w-4xl max-h-full">
-            <Image
-              src={selectedImage}
-              alt="拡大画像"
-              width={1920}
-              height={1080}
-              style={{ width: '100%', height: 'auto', objectFit: 'contain', maxHeight: '90vh' }}
-            />
+          <div className="relative max-h-full w-full max-w-5xl overflow-hidden rounded-none shadow-2xl sm:rounded-2xl">
+            <div className="animate-[pop_0.25s_ease-out]">
+              <Image
+                src={selectedImage}
+                alt="拡大画像"
+                width={1200}
+                height={800}
+                className="max-h-[90vh] w-full object-contain"
+                sizes="100vw"
+              />
+            </div>
           </div>
-          <button 
-            onClick={() => setSelectedImage(null)} // 右上の閉じるボタン
-            className="absolute top-4 right-4 text-white hover:text-gray-300"
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              setSelectedImage(null);
+            }}
+            className="absolute right-4 top-4 rounded-full bg-black/60 p-2 text-white transition hover:bg-black/80"
           >
-            <XMarkIcon className="w-8 h-8" />
+            <XMarkIcon className="h-7 w-7" />
           </button>
         </div>
-      )}
+      ) : null}
     </section>
-    );
+  );
 }

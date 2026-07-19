@@ -4,6 +4,9 @@ import { NextResponse } from "next/server";
 import { getSiteContent, saveSiteContent } from "@/lib/adminContent";
 
 const blobToken = process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_TOKEN;
+const storeId = process.env.BLOB_STORE_ID;
+const oidcToken = process.env.VERCEL_OIDC_TOKEN;
+const hasBlobCredentials = Boolean(blobToken || (storeId && oidcToken));
 
 function normalizeGalleryImages(images = []) {
   return Array.from({ length: 9 }, (_, index) =>
@@ -18,11 +21,18 @@ async function saveUploadedFile(file, subdir = "uploads") {
   const fileName = `${Date.now()}-${randomUUID().slice(0, 8)}.${extension}`;
   const blobPath = `gallery/${subdir}/${fileName}`;
 
+  if (!hasBlobCredentials) {
+    throw new Error(
+      "Vercel Blob credentials are not configured. Add BLOB_READ_WRITE_TOKEN or BLOB_STORE_ID + VERCEL_OIDC_TOKEN in Vercel Project Settings > Environment Variables and redeploy.",
+    );
+  }
+
   const blob = await put(blobPath, buffer, {
-    access: "public",
+    access: "private",
     addRandomSuffix: false,
     contentType: file.type || "application/octet-stream",
     ...(blobToken ? { token: blobToken } : {}),
+    ...(storeId && oidcToken ? { storeId, oidcToken } : {}),
   });
 
   return blob.url;

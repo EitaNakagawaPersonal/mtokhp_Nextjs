@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-    unoptimized: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.blob.vercel-storage.com',
+      },
+    ],
+    unoptimized: true,
   },
 };
 

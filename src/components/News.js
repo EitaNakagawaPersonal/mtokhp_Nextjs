@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { getSiteContent } from "@/lib/adminContent";
 
 function parseDateValue(value) {
@@ -62,12 +61,11 @@ export default async function News() {
               <div className="grid gap-6 lg:grid-cols-[minmax(0,0.7fr)_minmax(280px,1.1fr)] lg:items-stretch">
                 <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
                   <div className="relative aspect-[4/3] w-full max-w-[320px]">
-                    <Image
+                    <img
                       src={item.imageUrl}
                       alt={item.title || "お知らせ画像"}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="h-full w-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                 </div>

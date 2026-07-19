@@ -37,11 +37,11 @@
     "enabled": true,
     "item": {
       "date": "2026-07-17",
-      "title": "テストテストテスト",
+      "title": "テストテストテストテスト",
       "body": "テストテストテストテスト\r\n\r\nテストテストテストテスト\r\n\r\nテストテストテストテスト",
       "url": "",
       "hasImage": true,
-      "imageUrl": "/images/uploads/1784299991977-08144c2a.png",
+      "imageUrl": "https://hroqogfqnfvachso.private.blob.vercel-storage.com/news/uploads/1784468998439-e04358c1.png",
       "startDate": "2026-07-14",
       "endDate": "2026-07-30"
     }

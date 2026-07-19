@@ -3,6 +3,15 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+async function parseJsonResponse(response) {
+  const text = await response.text();
+  try {
+    return text ? JSON.parse(text) : {};
+  } catch {
+    return { error: text || "Unexpected response from server." };
+  }
+}
+
 export default function AdminDashboard() {
   const router = useRouter();
   const [content, setContent] = useState(null);
@@ -29,33 +38,40 @@ export default function AdminDashboard() {
 
   const loadData = async () => {
     setLoading(true);
-    const response = await fetch("/api/admin/config");
+    try {
+      const response = await fetch("/api/admin/config");
 
-    if (response.status === 401) {
-      router.push("/admin/login");
-      return;
-    }
+      if (response.status === 401) {
+        router.push("/admin/login");
+        return;
+      }
 
-    const data = await response.json();
-    setContent(data.content || null);
-    setNewsConfig(
-      data.content?.news || {
-        enabled: false,
-        item: {
-          date: "",
-          title: "",
-          body: "",
-          url: "",
-          hasImage: false,
-          imageUrl: "",
-          startDate: "",
-          endDate: "",
+      const data = await parseJsonResponse(response);
+      setContent(data.content || null);
+      setNewsConfig(
+        data.content?.news || {
+          enabled: false,
+          item: {
+            date: "",
+            title: "",
+            body: "",
+            url: "",
+            hasImage: false,
+            imageUrl: "",
+            startDate: "",
+            endDate: "",
+          },
         },
-      },
-    );
-    setNewsImageFile(null);
-    setNewsImageName("");
-    setLoading(false);
+      );
+    } catch (error) {
+      setMessage(
+        error instanceof Error ? error.message : "管理データの読み込みに失敗しました。",
+      );
+    } finally {
+      setNewsImageFile(null);
+      setNewsImageName("");
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -102,19 +118,25 @@ export default function AdminDashboard() {
     formData.append("slotIndex", String(selectedSlot));
 
     setMessage("ギャラリー画像を追加しています...");
-    const response = await fetch("/api/admin/gallery", {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const response = await fetch("/api/admin/gallery", {
+        method: "POST",
+        body: formData,
+      });
 
-    const result = await response.json();
-    if (response.ok) {
-      setMessage("ギャラリー画像を追加しました。" );
-      setGalleryFile(null);
-      setGalleryFileName("");
-      setContent(result.content);
-    } else {
-      setMessage(result.error || "ギャラリー画像の追加に失敗しました。" );
+      const result = await parseJsonResponse(response);
+      if (response.ok) {
+        setMessage("ギャラリー画像を追加しました。" );
+        setGalleryFile(null);
+        setGalleryFileName("");
+        setContent(result.content);
+      } else {
+        setMessage(result.error || "ギャラリー画像の追加に失敗しました。" );
+      }
+    } catch (error) {
+      setMessage(
+        error instanceof Error ? error.message : "ギャラリー画像の追加に失敗しました。",
+      );
     }
   };
 
@@ -154,20 +176,26 @@ export default function AdminDashboard() {
     }
 
     setMessage("NEWSを保存しています...");
-    const response = await fetch("/api/admin/config", {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const response = await fetch("/api/admin/config", {
+        method: "POST",
+        body: formData,
+      });
 
-    const result = await response.json();
-    if (response.ok) {
-      setMessage("NEWSを更新しました。" );
-      setContent(result.content);
-      setNewsConfig(result.content?.news || newsConfig);
-      setNewsImageFile(null);
-      setNewsImageName("");
-    } else {
-      setMessage(result.error || "NEWSの更新に失敗しました。" );
+      const result = await parseJsonResponse(response);
+      if (response.ok) {
+        setMessage("NEWSを更新しました。" );
+        setContent(result.content);
+        setNewsConfig(result.content?.news || newsConfig);
+        setNewsImageFile(null);
+        setNewsImageName("");
+      } else {
+        setMessage(result.error || "NEWSの更新に失敗しました。" );
+      }
+    } catch (error) {
+      setMessage(
+        error instanceof Error ? error.message : "NEWSの更新に失敗しました。",
+      );
     }
   };
 

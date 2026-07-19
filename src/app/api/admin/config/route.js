@@ -1,21 +1,25 @@
-import fs from "fs/promises";
-import path from "path";
+import { put } from "@vercel/blob";
 import { randomUUID } from "crypto";
 import { NextResponse } from "next/server";
 import { getAnalyticsConfig, saveAnalyticsConfig, getSiteContent, saveSiteContent } from "@/lib/adminContent";
 
+const blobToken = process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_TOKEN;
+
 async function saveUploadedFile(file, subdir = "uploads") {
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
-  const extension = path.extname(file.name) || ".jpg";
-  const fileName = `${Date.now()}-${randomUUID().slice(0, 8)}${extension}`;
-  const relativePath = `/images/${subdir}/${fileName}`;
-  const absolutePath = path.join(process.cwd(), "public", relativePath.replace(/^\/+/, ""));
+  const extension = file.name && file.name.includes(".") ? file.name.split(".").pop() : "jpg";
+  const fileName = `${Date.now()}-${randomUUID().slice(0, 8)}.${extension}`;
+  const blobPath = `news/${subdir}/${fileName}`;
 
-  await fs.mkdir(path.dirname(absolutePath), { recursive: true });
-  await fs.writeFile(absolutePath, buffer);
+  const blob = await put(blobPath, buffer, {
+    access: "public",
+    addRandomSuffix: false,
+    contentType: file.type || "application/octet-stream",
+    ...(blobToken ? { token: blobToken } : {}),
+  });
 
-  return relativePath;
+  return blob.url;
 }
 
 export async function GET(request) {
@@ -41,39 +45,46 @@ export async function POST(request) {
   const contentType = request.headers.get("content-type") || "";
 
   if (contentType.includes("multipart/form-data")) {
-    const formData = await request.formData();
-    const newsEnabled = formData.get("newsEnabled") === "true";
-    const existingImageUrl = formData.get("existingImageUrl")?.toString() || "";
-    const newsItem = {
-      date: formData.get("newsDate")?.toString() || "",
-      title: formData.get("newsTitle")?.toString() || "",
-      body: formData.get("newsBody")?.toString() || "",
-      url: formData.get("newsUrl")?.toString() || "",
-      hasImage: formData.get("newsHasImage") === "true",
-      startDate: formData.get("newsStartDate")?.toString() || "",
-      endDate: formData.get("newsEndDate")?.toString() || "",
-    };
+    try {
+      const formData = await request.formData();
+      const newsEnabled = formData.get("newsEnabled") === "true";
+      const existingImageUrl = formData.get("existingImageUrl")?.toString() || "";
+      const newsItem = {
+        date: formData.get("newsDate")?.toString() || "",
+        title: formData.get("newsTitle")?.toString() || "",
+        body: formData.get("newsBody")?.toString() || "",
+        url: formData.get("newsUrl")?.toString() || "",
+        hasImage: formData.get("newsHasImage") === "true",
+        startDate: formData.get("newsStartDate")?.toString() || "",
+        endDate: formData.get("newsEndDate")?.toString() || "",
+      };
 
-    let imageUrl = "";
-    const image = formData.get("newsImage");
-    if (image && typeof image !== "string" && image instanceof File) {
-      imageUrl = await saveUploadedFile(image, "uploads");
-    } else if (newsItem.hasImage) {
-      imageUrl = existingImageUrl;
+      let imageUrl = "";
+      const image = formData.get("newsImage");
+      if (image && typeof image !== "string" && image instanceof File) {
+        imageUrl = await saveUploadedFile(image, "uploads");
+      } else if (newsItem.hasImage) {
+        imageUrl = existingImageUrl;
+      }
+
+      const content = await getSiteContent();
+      content.news = {
+        enabled: newsEnabled,
+        item: {
+          ...newsItem,
+          imageUrl: newsItem.hasImage ? imageUrl : "",
+          hasImage: newsItem.hasImage,
+        },
+      };
+
+      await saveSiteContent(content);
+      return NextResponse.json({ ok: true, content });
+    } catch (error) {
+      return NextResponse.json(
+        { error: error instanceof Error ? error.message : "保存中にエラーが発生しました。" },
+        { status: 500 },
+      );
     }
-
-    const content = await getSiteContent();
-    content.news = {
-      enabled: newsEnabled,
-      item: {
-        ...newsItem,
-        imageUrl: newsItem.hasImage ? imageUrl : "",
-        hasImage: newsItem.hasImage,
-      },
-    };
-
-    await saveSiteContent(content);
-    return NextResponse.json({ ok: true, content });
   }
 
   const body = await request.json();

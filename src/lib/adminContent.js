@@ -1,6 +1,8 @@
 import fs from "fs/promises";
 import path from "path";
 
+const isVercelRuntime = Boolean(process.env.VERCEL || process.env.NETLIFY || process.env.CF_PAGES);
+
 const contentFilePath = path.join(process.cwd(), "src/data/site-content.json");
 const analyticsFilePath = path.join(process.cwd(), "src/data/analytics.json");
 
@@ -89,6 +91,10 @@ async function readJson(filePath, fallback) {
 }
 
 async function writeJson(filePath, data) {
+  if (isVercelRuntime) {
+    return;
+  }
+
   await fs.mkdir(path.dirname(filePath), { recursive: true });
   await fs.writeFile(filePath, JSON.stringify(data, null, 2));
 }

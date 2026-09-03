@@ -10,8 +10,6 @@ const categorizedProducts = [
     title: "建築用木材",
     products: [
       { title: "住宅建築材 一式", imageUrl: "/images/products/residential-building.avif" },
-      { title: "土木用資材", imageUrl: "/images/products/civil-engineering.avif" },
-      { title: "パレット・梱包資材", imageUrl: "/images/products/pallets-and-packaging.avif" },
       { title: "丁張板（12×75）", imageUrl: "/images/products/丁張板(12×75).jpg" },
       { title: "垂木（45角）", imageUrl: "/images/products/垂木(45角).jpg" },
       { title: "杭（長さ1,000〜）", imageUrl: "/images/products/杭(長さ1,000〜).jpg" },

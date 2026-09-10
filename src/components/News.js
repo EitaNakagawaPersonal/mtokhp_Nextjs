@@ -49,7 +49,7 @@ export default async function News() {
   }
 
   return (
-    <section className="bg-white pt-8 pb-8 md:pt-10 md:pb-10">
+    <section className="bg-white pt-8 md:pt-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm md:p-8">
           <div className="text-center">
@@ -90,7 +90,7 @@ export default async function News() {
               <div className="text-left">
                 {item?.date ? <p className="text-center text-sm font-medium text-slate-500">{item.date}</p> : null}
                 <h3 className="mt-3 text-center text-xl font-semibold text-slate-800">{item?.title || "最新のお知らせ"}</h3>
-                <p className="mt-3 whitespace-pre-line text-sm leading-7 text-slate-600">{item?.body || "内容はまだ登録されていません。"}</p>
+                <p className="mt-3 whitespace-pre-line text-center text-sm leading-7 text-slate-600">{item?.body || "内容はまだ登録されていません。"}</p>
                 {item?.url ? (
                   <div className="mt-5 text-center">
                     <a

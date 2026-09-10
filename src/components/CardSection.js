@@ -27,7 +27,7 @@ const cardData = [
 export default function CardSection() {
   return (
     // 👇 クラスを修正: max-w-... と mx-auto を削除し、paddingを調整
-    <section className="w-full pt-0 pb-16 px-4 sm:px-6 lg:px-8">
+    <section className="w-full pt-8 pb-16 px-4 sm:px-6 lg:px-8 md:pt-10">
       
       {/* カードグリッド */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

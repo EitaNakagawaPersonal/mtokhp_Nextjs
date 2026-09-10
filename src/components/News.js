@@ -51,12 +51,12 @@ export default async function News() {
   return (
     <section className="bg-white pt-8 md:pt-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm md:p-8">
+        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-3 shadow-sm md:p-4">
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-slate-900">NEWS</h2>
+            <h2 className="text-xl font-bold text-slate-900">NEWS</h2>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-2">
             {item?.hasImage && item?.imageUrl ? (
               <div className="grid gap-6 lg:grid-cols-[minmax(0,0.7fr)_minmax(280px,1.1fr)] lg:items-stretch">
                 <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
@@ -72,8 +72,8 @@ export default async function News() {
 
                 <div className="flex flex-col justify-center text-left">
                   {item?.date ? <p className="text-sm font-medium text-slate-500">{item.date}</p> : null}
-                  <h3 className="mt-3 text-xl font-semibold text-slate-800">{item?.title || "最新のお知らせ"}</h3>
-                  <p className="mt-3 whitespace-pre-line text-sm leading-7 text-slate-600">{item?.body || "内容はまだ登録されていません。"}</p>
+                  <h3 className="mt-3 text-lg font-semibold text-slate-800">{item?.title || "最新のお知らせ"}</h3>
+                  <p className="mt-3 whitespace-pre-line text-sm leading-5 text-slate-600">{item?.body || "内容はまだ登録されていません。"}</p>
                   {item?.url ? (
                     <a
                       href={item.url}
@@ -89,8 +89,8 @@ export default async function News() {
             ) : (
               <div className="text-left">
                 {item?.date ? <p className="text-center text-sm font-medium text-slate-500">{item.date}</p> : null}
-                <h3 className="mt-3 text-center text-xl font-semibold text-slate-800">{item?.title || "最新のお知らせ"}</h3>
-                <p className="mt-3 whitespace-pre-line text-center text-sm leading-7 text-slate-600">{item?.body || "内容はまだ登録されていません。"}</p>
+                <h3 className="mt-3 text-center text-lg font-semibold text-slate-800">{item?.title || "最新のお知らせ"}</h3>
+                <p className="mt-3 whitespace-pre-line text-center text-sm leading-5 text-slate-600">{item?.body || "内容はまだ登録されていません。"}</p>
                 {item?.url ? (
                   <div className="mt-5 text-center">
                     <a

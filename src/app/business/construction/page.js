@@ -3,8 +3,8 @@ import ConstructionStrengths from './components/ConstructionStrengths';
 import ProductIntroduction from './components/ProductIntroduction';
 
 export const metadata = {
-  title: "土木・建設事業",
-  description: "株式会社マツオカの土木・建設事業のご紹介。強みと取り扱い製品を掲載しています。",
+  title: "建築資材事業",
+  description: "株式会社マツオカの建築資材事業のご紹介。強みと取り扱い製品を掲載しています。",
   alternates: { canonical: "/business/construction" },
 };
 

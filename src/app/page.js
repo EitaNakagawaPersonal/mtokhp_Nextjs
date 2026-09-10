@@ -14,7 +14,6 @@ export default function Home() {
         <Hero />
         <News />
         <CardSection />
-        <Resin />
         <InstagramFeed />
         <Contact />
       </main>

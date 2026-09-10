@@ -40,10 +40,10 @@
       "title": "テストテストテストテスト",
       "body": "テストテストテストテスト\r\n\r\nテストテストテストテスト\r\n\r\nテストテストテストテスト",
       "url": "",
-      "hasImage": true,
-      "imageUrl": "https://hroqogfqnfvachso.private.blob.vercel-storage.com/news/uploads/1784468998439-e04358c1.png",
+      "hasImage": false,
+      "imageUrl": "",
       "startDate": "2026-07-14",
-      "endDate": "2026-07-30"
+      "endDate": "2026-09-30"
     }
   }
 }

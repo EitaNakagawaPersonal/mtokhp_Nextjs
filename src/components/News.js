@@ -88,18 +88,20 @@ export default async function News() {
               </div>
             ) : (
               <div className="text-left">
-                {item?.date ? <p className="text-sm font-medium text-slate-500">{item.date}</p> : null}
+                {item?.date ? <p className="text-center text-sm font-medium text-slate-500">{item.date}</p> : null}
                 <h3 className="mt-3 text-center text-xl font-semibold text-slate-800">{item?.title || "最新のお知らせ"}</h3>
                 <p className="mt-3 whitespace-pre-line text-sm leading-7 text-slate-600">{item?.body || "内容はまだ登録されていません。"}</p>
                 {item?.url ? (
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-5 inline-flex text-sm font-semibold text-blue-700 underline-offset-4 hover:underline"
-                  >
-                    詳しく見る
-                  </a>
+                  <div className="mt-5 text-center">
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex text-sm font-semibold text-blue-700 underline-offset-4 hover:underline"
+                    >
+                      詳しく見る
+                    </a>
+                  </div>
                 ) : null}
               </div>
             )}

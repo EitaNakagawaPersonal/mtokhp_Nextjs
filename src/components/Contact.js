@@ -131,7 +131,61 @@ export default function Contact() {
         </div>
 
         {/* --- 下部: マップと住所 --- */}
-        {/* ... (変更なし) ... */}
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* 木材部 */}
+          <div className="text-white">
+            <h3 className="text-2xl font-bold mb-4">木材部</h3>
+            <div className="space-y-1 mb-4">
+              <p>〒876-0822 大分県佐伯市西浜2-39</p>
+              <p>TEL: 0972-22-2611</p>
+              <p>
+                Email:{" "}
+                <a href="mailto:matuoka@cronos.ocn.ne.jp" className="underline hover:text-blue-300">
+                  matuoka@cronos.ocn.ne.jp
+                </a>
+              </p>
+            </div>
+            <div className="w-full aspect-video overflow-hidden rounded-md shadow-lg">
+              <iframe
+                title="木材部 地図"
+                src="https://www.google.com/maps?q=%E5%A4%A7%E5%88%86%E7%9C%8C%E4%BD%90%E4%BC%AF%E5%B8%82%E8%A5%BF%E6%B5%9C2-39&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+
+          {/* 建材部 */}
+          <div className="text-white">
+            <h3 className="text-2xl font-bold mb-4">建材部</h3>
+            <div className="space-y-1 mb-4">
+              <p>〒876-0851 大分県佐伯市常盤東町9-5</p>
+              <p>TEL: 0972-23-2611</p>
+              <p>
+                Email:{" "}
+                <a href="mailto:matuokakenzai@fancy.ocn.ne.jp" className="underline hover:text-blue-300">
+                  matuokakenzai@fancy.ocn.ne.jp
+                </a>
+              </p>
+            </div>
+            <div className="w-full aspect-video overflow-hidden rounded-md shadow-lg">
+              <iframe
+                title="建材部 地図"
+                src="https://www.google.com/maps?q=%E5%A4%A7%E5%88%86%E7%9C%8C%E4%BD%90%E4%BC%AF%E5%B8%82%E5%B8%B8%E7%9B%A4%E6%9D%B1%E7%94%BA9-5&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

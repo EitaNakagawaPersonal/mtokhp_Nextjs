@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
@@ -17,6 +18,30 @@ const productData = [
 
 export default function ProductIntroduction() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef(null);
+
+  const updateActiveIndex = () => {
+    const container = scrollRef.current;
+    if (!container || container.children.length === 0) {
+      return;
+    }
+
+    const viewportCenter = container.scrollLeft + container.clientWidth / 2;
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    Array.from(container.children).forEach((child, index) => {
+      const childCenter = child.offsetLeft + child.clientWidth / 2;
+      const distance = Math.abs(viewportCenter - childCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    setActiveIndex((prev) => (prev === closestIndex ? prev : closestIndex));
+  };
 
   return (
     <section className="bg-gray-100 py-12">
@@ -28,13 +53,17 @@ export default function ProductIntroduction() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <div
+          ref={scrollRef}
+          onScroll={updateActiveIndex}
+          className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3"
+        >
           {productData.map((card, index) => (
             <button
               key={`${card.title}-${index}`}
               type="button"
               onClick={() => setSelectedImage(card.imageUrl)}
-              className="group block overflow-hidden rounded-lg bg-white text-center shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+              className="group block w-[82%] shrink-0 snap-center overflow-hidden rounded-lg bg-white text-center shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 sm:w-[46%] lg:w-[31%]"
             >
               <div className="relative aspect-square w-full overflow-hidden">
                 <Image
@@ -42,7 +71,7 @@ export default function ProductIntroduction() {
                   alt={card.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 82vw, (max-width: 1024px) 46vw, 31vw"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <p className="font-bold text-white">画像を拡大</p>
@@ -52,6 +81,18 @@ export default function ProductIntroduction() {
                 <h3 className="text-lg font-semibold text-gray-800">{card.title}</h3>
               </div>
             </button>
+          ))}
+        </div>
+
+        <div className="mt-2 flex items-center justify-center gap-2">
+          {productData.map((_, index) => (
+            <span
+              key={`dot-${index}`}
+              className={`h-2.5 w-2.5 rounded-full transition-colors ${
+                index === activeIndex ? "bg-blue-700" : "bg-gray-300"
+              }`}
+              aria-hidden="true"
+            />
           ))}
         </div>
       </div>

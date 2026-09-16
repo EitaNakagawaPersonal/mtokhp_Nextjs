@@ -2,6 +2,7 @@ import { put } from "@vercel/blob";
 import { randomUUID } from "crypto";
 import { NextResponse } from "next/server";
 import { getSiteContent, saveSiteContent } from "@/lib/adminContent";
+import { isAuthorized } from "@/lib/adminAuth";
 
 const blobToken = process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_TOKEN;
 const storeId = process.env.BLOB_STORE_ID;
@@ -39,10 +40,7 @@ async function saveUploadedFile(file, subdir = "uploads") {
 }
 
 export async function POST(request) {
-  const sessionCookie = request.cookies.get("admin_session");
-  const expectedToken = process.env.ADMIN_SESSION_TOKEN || "matsuoka-admin";
-
-  if (!sessionCookie || sessionCookie.value !== expectedToken) {
+  if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

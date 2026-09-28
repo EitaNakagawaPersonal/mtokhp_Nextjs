@@ -27,7 +27,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-noto-sans-jp), "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-family: "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
   line-height: 1.8;
 }
 
@@ -75,7 +75,7 @@ body {
 
 /* 見出しスタイル */
 h1, h2, h3 {
-  font-family: var(--font-noto-serif-jp), "Noto Serif JP", serif;
+  font-family: "Noto Serif JP", serif;
   letter-spacing: 0.02em;
   margin-top: 0;
   margin-bottom: 0.6em;

@@ -1,24 +1,10 @@
-import { Noto_Sans_JP, Noto_Serif_JP, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import InstagramButton from "@/components/InstagramButton";
 import Header from "@/components/Header";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const inter = Inter({ subsets: ["latin"] });
-
-const notoSans = Noto_Sans_JP({
-  weight: ["300", "400", "700"],
-  subsets: ["latin"],
-  variable: '--font-noto-sans-jp',
-  display: 'swap',
-});
-
-const notoSerif = Noto_Serif_JP({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: '--font-noto-serif-jp',
-  display: 'swap',
-});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.matsuoka-corp.co.jp";
 
@@ -56,9 +42,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
-      <body
-        className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
-      >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased">
         <GoogleAnalytics />
         <Header />
         <main className="pt-20">{children}</main>

@@ -1,8 +1,8 @@
 import Hero from "./components/Hero";
 import ResinTableStrengths from "./components/ResinTableStrengths";
 import Gallery from "./components/Gallery";
-import JsonLd from '@/components/JsonLd';
-import productJsonLd from '@/data/jsonld/product-resin-table.json';
+// import JsonLd from '@/components/JsonLd';
+// import productJsonLd from '@/data/jsonld/product-resin-table.json';
 
 export const metadata = {
   title: "レジンテーブル事業",
@@ -13,7 +13,7 @@ export const metadata = {
 export default function ResinTable() {
     return (
         <main>
-            <JsonLd data={productJsonLd} />
+            {/* <JsonLd data={productJsonLd} /> */}
             <Hero />
             <ResinTableStrengths />
             <Gallery />

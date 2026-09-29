@@ -1,7 +1,7 @@
 import RealEstateStrengths from "./components/RealEstateStrengths";
 import Top from "./components/Top";
-import JsonLd from '@/components/JsonLd';
-import serviceJsonLd from '@/data/jsonld/service-real-estate.json';
+// import JsonLd from '@/components/JsonLd';
+// import serviceJsonLd from '@/data/jsonld/service-real-estate.json';
 
 export const metadata = {
   title: "不動産事業",
@@ -12,7 +12,7 @@ export const metadata = {
 export default function RealEstate() {
     return (
         <div className="relative bg-[url('/images/sea.png')] bg-cover bg-center bg-fixed">
-                    <JsonLd data={serviceJsonLd} />
+                    {/* <JsonLd data={serviceJsonLd} /> */}
                     <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
                     <main className="relative">
                         <Top /> 

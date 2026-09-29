@@ -24,16 +24,36 @@
     "postalCode": "876-0822",
     "addressCountry": "JP"
   },
-  "location": {
-    "@type": "Place",
-    "name": "佐伯工場",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "佐伯市",
-      "addressRegion": "大分県",
-      "addressCountry": "JP"
+  "location": [
+    {
+      "@type": "Place",
+      "name": "木材事業部（佐伯工場）",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "西浜2-39",
+        "addressLocality": "佐伯市",
+        "addressRegion": "大分県",
+        "postalCode": "876-0822",
+        "addressCountry": "JP"
+      },
+      "telephone": "0972-22-2611",
+      "email": "matuoka@cronos.ocn.ne.jp"
+    },
+    {
+      "@type": "Place",
+      "name": "建材事業部",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "常盤東町9-5",
+        "addressLocality": "佐伯市",
+        "addressRegion": "大分県",
+        "postalCode": "876-0851",
+        "addressCountry": "JP"
+      },
+      "telephone": "0972-23-2611",
+      "email": "matuokakenzai@fancy.ocn.ne.jp"
     }
-  },
+  ],
   "telephone": "0972-22-2611 ",
   "faxNumber": "0972-23-2610",
   "email": "matuoka@cronos.ocn.ne.jp",
@@ -55,10 +75,7 @@
     }
   ],
   "sameAs": [
-    "https://www.instagram.com/m.wood.hirose?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==",
-    "【要確認：Facebook公式URL（あれば）】",
-    "【要確認：X(Twitter)公式URL（あれば）】",
-    "【要確認：YouTube公式URL（あれば）】"
+    "https://www.instagram.com/m.wood.hirose?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
   ],
   "department": [
     {

@@ -6,7 +6,7 @@ export default function Hero() {
 
       {/* 背景動画（16:9 アスペクト比を維持） */}
       <video
-        src="/images/top/matsuoka_hp_top.mov"
+        src="/videos/hero.mp4"
         className="absolute inset-0 w-full h-full object-cover"
         autoPlay
         loop

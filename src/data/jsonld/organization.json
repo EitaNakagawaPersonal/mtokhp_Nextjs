@@ -1,0 +1,85 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "株式会社マツオカ",
+  "legalName": "株式会社マツオカ",
+  "alternateName": ["マツオカ", "Wood Matsuoka K.K"],
+  "url": "https://www.wood-matsuoka.com/",
+  "logo": "", 
+  "foundingDate": "1945-09",
+  "description": "木と良い関係を目指して - 株式会社マツオカの公式サイト。建築資材、建材、造船資材、不動産、レジンテーブル等の事業を展開しています。",
+  "taxID": "9320002017596",
+  "knowsAbout": ["製材業", "特殊材", "国産材", "一般流通材", "輸入材"],
+  "award": "JAS認証（目視等級区分及びその他）JLIRA-B・64・20",
+  "subjectOf": {
+    "@type": "ImageObject",
+    "name": "JAS認証証明画像",
+    "url": "https://molink.jp/certification_file/sizeL/QYxaktLIRQzB4R8RIBd9qmWoYBbc2II0ioks8xpe.jpeg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "西浜2-39",
+    "addressLocality": "佐伯市",
+    "addressRegion": "大分県",
+    "postalCode": "876-0822",
+    "addressCountry": "JP"
+  },
+  "location": {
+    "@type": "Place",
+    "name": "佐伯工場",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "佐伯市",
+      "addressRegion": "大分県",
+      "addressCountry": "JP"
+    }
+  },
+  "telephone": "0972-22-2611 ",
+  "faxNumber": "0972-23-2610",
+  "email": "matuoka@cronos.ocn.ne.jp",
+  "founder": {
+    "@type": "Person",
+    "name": "廣瀬 岳",
+    "alternateName": "ヒロセ ガク",
+    "jobTitle": "代表取締役社長"
+  },
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 33
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "主な取引先",
+      "value": "地元大工、工務店、全国の造船所"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/m.wood.hirose?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==",
+    "【要確認：Facebook公式URL（あれば）】",
+    "【要確認：X(Twitter)公式URL（あれば）】",
+    "【要確認：YouTube公式URL（あれば）】"
+  ],
+  "department": [
+    {
+      "@type": "Organization",
+      "name": "建築資材事業",
+      "description": "建築資材の製造、販売"
+    },
+    {
+      "@type": "Organization",
+      "name": "造船資材事業",
+      "description": "造船資材の製造、販売"
+    },
+    {
+      "@type": "Organization",
+      "name": "不動産事業",
+      "description": "不動産の売買・賃貸・管理等の業務"
+    },
+    {
+      "@type": "Organization",
+      "name": "レジンテーブル事業",
+      "description": "レジンテーブルの製造・販売"
+    }
+  ]
+}

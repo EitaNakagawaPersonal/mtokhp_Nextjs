@@ -1,0 +1,16 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "レジンテーブル",
+  "description": "レジンテーブルの製造・販売",
+  "brand": {
+    "@type": "Brand",
+    "name": "株式会社マツオカ"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "JPY",
+    "price": "【要確認：価格帯】",
+    "availability": "【要確認：在庫・受注状況】"
+  }
+}

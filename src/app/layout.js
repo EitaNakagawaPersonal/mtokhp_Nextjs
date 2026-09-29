@@ -3,6 +3,8 @@ import "./globals.css";
 import InstagramButton from "@/components/InstagramButton";
 import Header from "@/components/Header";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import JsonLd from "@/components/JsonLd";
+import organizationJsonLd from "@/data/jsonld/organization.json";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +16,7 @@ export const metadata = {
     default: "株式会社マツオカ",
     template: "%s | 株式会社マツオカ",
   },
-  description: "木と良い関係を目指して - 株式会社マツオカの公式サイト。土木・建設、不動産、造船、樹脂テーブル、林業事業を展開しています。",
+  description: "木と良い関係を目指して - 株式会社マツオカの公式サイト。大分県佐伯市にて、造船資材、建材から特殊加工まで可能な製材屋です。木材を通して社会を支える企業です。",
   keywords: ["マツオカ", "住宅", "建設", "不動産", "造船", "レジンテーブル", "建材"],
   robots: {
     index: true,
@@ -49,6 +51,7 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <JsonLd data={organizationJsonLd} />
       </head>
       <body className="antialiased">
         <GoogleAnalytics />

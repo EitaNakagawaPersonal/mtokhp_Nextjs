@@ -8,7 +8,7 @@ import organizationJsonLd from "@/data/jsonld/organization.json";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.matsuoka-corp.co.jp";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.wood-matsuoka.com";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),

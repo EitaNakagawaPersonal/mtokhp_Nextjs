@@ -1,4 +1,4 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.matsuoka-corp.co.jp";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.wood-matsuoka.com";
 
 const routes = [
   "",

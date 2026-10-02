@@ -1,4 +1,4 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.wood-matsuoka.com/";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.wood-matsuoka.com";
 
 // items: [{ name: "表示名", path: "/business/construction" }, ...] ("/"はホームを表す)
 export function buildBreadcrumbJsonLd(items) {

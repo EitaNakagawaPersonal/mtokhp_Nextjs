@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import TargetAudience from '@/components/TargetAudience';
 import CardSection from '@/components/CardSection';
 import Greeting from '@/components/greeting';
 import Resin from '@/components/resin';
@@ -17,6 +18,7 @@ export default function Home() {
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={localBusinessJsonLd} />
         <Hero />
+        {/* <TargetAudience /> */}
         <News />
         <CardSection />
         <InstagramFeed />

@@ -18,7 +18,7 @@ export default function Home() {
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={localBusinessJsonLd} />
         <Hero />
-        {/* <TargetAudience /> */}
+        <TargetAudience />
         <News />
         <CardSection />
         <InstagramFeed />

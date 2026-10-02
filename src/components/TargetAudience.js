@@ -20,7 +20,7 @@ export default function TargetAudience() {
               src="/images/sagyochu.jpg"
               alt="業者様・プロ向け"
               fill
-              className="object-cover blur-sm group-hover:blur-[5px] transition-all duration-300"
+              className="object-cover group-hover:blur-xs transition-all duration-300"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
             
@@ -48,7 +48,7 @@ export default function TargetAudience() {
               src="/images/diy_image.jpg"
               alt="DIY愛好者向け"
               fill
-              className="object-cover blur-sm group-hover:blur-[5px] transition-all duration-300"
+              className="object-cover group-hover:blur-xs transition-all duration-300"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
             

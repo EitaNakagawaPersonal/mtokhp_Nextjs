@@ -41,17 +41,19 @@ function GAInner() {
   const enabled = pageConfig?.enabled ?? true;
 
   useEffect(() => {
-    if (!gaId || !enabled || typeof window === 'undefined') return;
+    if (!analyticsConfig || !gaId || !enabled || typeof window === 'undefined') return;
 
     const search = searchParams.toString();
     const url = pathname + (search ? `?${search}` : '');
 
-    window.gtag?.('event', 'page_view', {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+    window.gtag('event', 'page_view', {
       page_path: url,
     });
-  }, [pathname, searchParams, gaId, enabled]);
+  }, [analyticsConfig, pathname, searchParams, gaId, enabled]);
 
-  if (!gaId || !enabled) return null;
+  if (!analyticsConfig || !gaId || !enabled) return null;
 
   return (
     <>
@@ -68,7 +70,7 @@ function GAInner() {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${gaId}');
+            gtag('config', '${gaId}', { send_page_view: false });
           `,
         }}
       />

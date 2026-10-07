@@ -74,3 +74,5 @@ docker-compose.yml:12でNODE_ENV=developmentに設定されています
 適切な説明文（altテキスト）を設定することをおすすめします。
 
 プロ向けの画像、DIY愛好者向けの画像を入れる
+
+Google Analytics

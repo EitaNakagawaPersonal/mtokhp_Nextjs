@@ -17,16 +17,17 @@ const navItems = [
       { href: "/business/real-estate", label: "不動産事業" },
     ]
   },
-  { href: "https://en-gage.net/pinehirose_saiyo/", label: "採用情報", external: true },
-  {
-    label: "Forest オンライン店舗",
-    subItems: [
-      { href: "https://www.yahoo.co.jp/", label: "個人のお客様" },
-      { href: "https://www.yahoo.co.jp/", label: "法人のお客様" },
-    ]
-  },
+  { href: process.env.NEXT_PUBLIC_RECRUITMENTS_URL || "https://en-gage.net/pinehirose_saiyo/", label: "採用情報", external: true },
+  // ↓Forestオンライン店舗は一旦非表示
+  //   {
+  //     label: "Forest オンライン店舗",
+  //     subItems: [
+  //       { href: process.env.NEXT_PUBLIC_FOREST_INDIVIDUAL_URL, label: "個人のお客様" },
+  //       { href: process.env.NEXT_PUBLIC_FOREST_BUSINESS_URL, label: "法人のお客様" },
+  //     ].filter((item) => item.href),
+  //   },
   { href: "/#contact", label: "お問い合わせ" },
-];
+].filter((item) => !item.subItems || item.subItems.length > 0);
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);

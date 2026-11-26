@@ -16,7 +16,6 @@ export async function GET() {
 - [造船資材事業](${siteUrl}/business/shipbuilding): 進水台トリガー、矢盤木、緩衝材等の造船資材の製造・販売
 - [不動産事業](${siteUrl}/business/real-estate): 不動産の売買・賃貸・管理等の業務
 - [レジンテーブル事業](${siteUrl}/business/resin-table): オーダーメイドのレジンテーブルの製造・販売
-- [林業（Forestオンライン店舗）](${siteUrl}/forest)
 
 ## 採用情報
 - [採用情報](${siteUrl}/recruit)

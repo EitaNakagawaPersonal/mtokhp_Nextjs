@@ -9,7 +9,7 @@ const routes = [
   "/business/real-estate/buy",
   "/business/resin-table",
   "/business/shipbuilding",
-  "/forest",
+  // "/forest", // Forestオンライン店舗は一旦非表示
   "/recruit",
 ];
 

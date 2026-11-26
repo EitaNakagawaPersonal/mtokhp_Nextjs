@@ -12,16 +12,41 @@ const productGroups = [
     bgImage: "/images/products/柱(90角,105角,120角).jpg",
     categories: [
       {
-        id: "architectural-wood",
-        title: "建築用木材",
+        id: "structural-wood",
+        title: "構造材",
+        note: "105角柱や120角土台、母屋など様々なサイズに対応可能",
         products: [
-          { title: "住宅資材 一式", imageUrl: "/images/products/residential-building.avif" },
-          { title: "丁張板（12×75）", imageUrl: "/images/products/丁張板(12×75).jpg" },
-          { title: "垂木（45角）", imageUrl: "/images/products/垂木(45角).jpg" },
-          { title: "杭（長さ1,000〜）", imageUrl: "/images/products/杭(長さ1,000〜).jpg" },
           { title: "柱（90角・105角・120角）", imageUrl: "/images/products/柱(90角,105角,120角).jpg" },
+        ],
+      },
+      {
+        id: "habari-wood",
+        title: "羽柄材",
+        note: "色々な幅・長さに対応可能",
+        products: [
+          { title: "垂木（45角）", imageUrl: "/images/products/垂木(45角).jpg" },
+          { title: "胴縁", imageUrl: "/images/building_materials/doubuchi.jpg" },
           { title: "根太（45×60）", imageUrl: "/images/products/根太(45×60).jpg" },
           { title: "間柱（45×105）", imageUrl: "/images/products/間柱(45×105).jpg" },
+        ],
+      },
+      {
+        id: "civil-materials",
+        title: "土木資材",
+        products: [
+          { title: "丁張板（12×75）", imageUrl: "/images/products/丁張板(12×75).jpg" },
+          { title: "杭（長さ1,000〜）", imageUrl: "/images/products/杭(長さ1,000〜).jpg" },
+          { title: "桟木", imageUrl: "/images/building_materials/zangi.jpg" },
+          { title: "コンパネ", imageUrl: "/images/building_materials/conpane.jpg" },
+        ],
+      },
+      {
+        id: "zousaku-wood",
+        title: "造作材",
+        products: [
+          { title: "無垢フローリング", imageUrl: "/images/building_materials/flooring.jpg" },
+          { title: "巾木", imageUrl: "/images/building_materials/habaki.jpg" },
+          { title: "建具材", imageUrl: "/images/building_materials/tateguzai.jpg" },
         ],
       },
     ],
@@ -164,7 +189,11 @@ export default function ProductIntroduction() {
                     {group.categories.map((category) => (
             <div key={category.id}>
               {group.categories.length > 1 ? (
-                <h3 className="mb-4 text-center text-2xl font-bold text-gray-800">{category.title}</h3>
+                <h3 className="mb-2 text-center text-2xl font-bold text-gray-800">{category.title}</h3>
+              ) : null}
+
+              {category.note ? (
+                <p className="mb-4 text-center text-sm text-gray-600 sm:text-base">{category.note}</p>
               ) : null}
 
               {category.products.length === 0 ? (
@@ -228,9 +257,6 @@ export default function ProductIntroduction() {
                     ))}
 
                     <div className="text-center">
-                      <p className="mb-4 text-xs text-gray-500 sm:text-sm">
-                        掲載されていない商品も取り扱っております。お気軽にお問い合わせください。
-                      </p>
                       <button
                         type="button"
                         onClick={() => closeGroup(group.id)}

@@ -21,7 +21,30 @@ const categorizedProducts = [
   {
     id: "housing-materials",
     title: "住宅用資材",
-    products: [],
+    products: [
+      { title: "石膏ボード", imageUrl: "/images/building_materials/gypsum_board.png" },
+      { title: "構造用合板", imageUrl: "/images/building_materials/structural_plywood.png" },
+      { title: "ベニヤ", imageUrl: "/images/building_materials/veneer.png" },
+      { title: "断熱材", imageUrl: "/images/building_materials/onsulation_material.png" },
+    ],
+  },
+  {
+    id: "water-areas",
+    title: "水回り",
+    products: [
+      { title: "バス", imageUrl: "/images/building_materials/bath.png" },
+      { title: "トイレ", imageUrl: "/images/building_materials/toilet.png" },
+      { title: "キッチン", imageUrl: "/images/building_materials/kitchen.png" },
+    ],
+  },
+  {
+    id: "exterior",
+    title: "エクステリア",
+    products: [
+      { title: "カーポート", imageUrl: "/images/building_materials/carport.png" },
+      { title: "倉庫", imageUrl: "/images/building_materials/warehouse.png" },
+      { title: "フェンス", imageUrl: "/images/building_materials/fence2.png", badge: "工事も承ります" },
+    ],
   },
 ];
 
@@ -105,6 +128,11 @@ export default function ProductIntroduction() {
                             className="object-cover transition-transform duration-300 group-hover:scale-105"
                             sizes="(max-width: 640px) 82vw, (max-width: 1024px) 46vw, 31vw"
                           />
+                          {card.badge ? (
+                            <span className="absolute left-2 top-2 z-10 rounded-full bg-blue-800 px-3 py-1 text-sm font-bold text-white shadow">
+                              {card.badge}
+                            </span>
+                          ) : null}
                           <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                             <p className="font-bold text-white">画像を拡大</p>
                           </div>

@@ -2,58 +2,93 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import { XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 
-const categorizedProducts = [
+// 横長カード(グループ)をクリックすると、中のリスト(横スクロール)が開く。
+const productGroups = [
   {
     id: "architectural-wood",
     title: "建築用木材",
-    products: [
-      { title: "住宅資材 一式", imageUrl: "/images/products/residential-building.avif" },
-      { title: "丁張板（12×75）", imageUrl: "/images/products/丁張板(12×75).jpg" },
-      { title: "垂木（45角）", imageUrl: "/images/products/垂木(45角).jpg" },
-      { title: "杭（長さ1,000〜）", imageUrl: "/images/products/杭(長さ1,000〜).jpg" },
-      { title: "柱（90角・105角・120角）", imageUrl: "/images/products/柱(90角,105角,120角).jpg" },
-      { title: "根太（45×60）", imageUrl: "/images/products/根太(45×60).jpg" },
-      { title: "間柱（45×105）", imageUrl: "/images/products/間柱(45×105).jpg" },
+    bgImage: "/images/products/柱(90角,105角,120角).jpg",
+    categories: [
+      {
+        id: "architectural-wood",
+        title: "建築用木材",
+        products: [
+          { title: "住宅資材 一式", imageUrl: "/images/products/residential-building.avif" },
+          { title: "丁張板（12×75）", imageUrl: "/images/products/丁張板(12×75).jpg" },
+          { title: "垂木（45角）", imageUrl: "/images/products/垂木(45角).jpg" },
+          { title: "杭（長さ1,000〜）", imageUrl: "/images/products/杭(長さ1,000〜).jpg" },
+          { title: "柱（90角・105角・120角）", imageUrl: "/images/products/柱(90角,105角,120角).jpg" },
+          { title: "根太（45×60）", imageUrl: "/images/products/根太(45×60).jpg" },
+          { title: "間柱（45×105）", imageUrl: "/images/products/間柱(45×105).jpg" },
+        ],
+      },
     ],
   },
   {
     id: "housing-materials",
     title: "住宅用資材",
-    products: [
-      { title: "石膏ボード", imageUrl: "/images/building_materials/gypsum_board.png" },
-      { title: "構造用合板", imageUrl: "/images/building_materials/structural_plywood.png" },
-      { title: "ベニヤ", imageUrl: "/images/building_materials/veneer.png" },
-      { title: "断熱材", imageUrl: "/images/building_materials/onsulation_material.png" },
-    ],
-  },
-  {
-    id: "water-areas",
-    title: "水回り",
-    products: [
-      { title: "バス", imageUrl: "/images/building_materials/bath.png" },
-      { title: "トイレ", imageUrl: "/images/building_materials/toilet.png" },
-      { title: "キッチン", imageUrl: "/images/building_materials/kitchen.png" },
-    ],
-  },
-  {
-    id: "exterior",
-    title: "エクステリア",
-    products: [
-      { title: "カーポート", imageUrl: "/images/building_materials/carport.png" },
-      { title: "倉庫", imageUrl: "/images/building_materials/warehouse.png" },
-      { title: "フェンス", imageUrl: "/images/building_materials/fence2.png", badge: "工事も承ります" },
+    bgImage: "/images/building_materials/kitchen.png",
+    categories: [
+      {
+        id: "water-areas",
+        title: "水回り・住宅設備",
+        products: [
+          { title: "バス", imageUrl: "/images/building_materials/bath.png" },
+          { title: "トイレ", imageUrl: "/images/building_materials/toilet.png" },
+          { title: "キッチン", imageUrl: "/images/building_materials/kitchen.png" },
+        ],
+      },
+      {
+        id: "housing-materials-list",
+        title: "住宅用資材",
+        products: [
+          { title: "石膏ボード", imageUrl: "/images/building_materials/gypsum_board.png" },
+          { title: "構造用合板", imageUrl: "/images/building_materials/structural_plywood.png" },
+          { title: "ベニヤ", imageUrl: "/images/building_materials/veneer.png" },
+          { title: "断熱材", imageUrl: "/images/building_materials/onsulation_material.png" },
+        ],
+      },
+      {
+        id: "fittings",
+        title: "建具",
+        products: [
+          { title: "サッシ", imageUrl: "/images/building_materials/sash.png" },
+          { title: "ドア", imageUrl: "/images/building_materials/door.png" },
+        ],
+      },
+      // エクステリアは今回の構成に含まれないため一時的に非表示(必要なら復活)
+      // {
+      //   id: "exterior",
+      //   title: "エクステリア",
+      //   products: [
+      //     { title: "カーポート", imageUrl: "/images/building_materials/carport.png" },
+      //     { title: "倉庫", imageUrl: "/images/building_materials/warehouse.png" },
+      //     { title: "フェンス", imageUrl: "/images/building_materials/fence2.png", badge: "工事も承ります" },
+      //   ],
+      // },
     ],
   },
 ];
 
+const allCategories = productGroups.flatMap((group) => group.categories);
+
 export default function ProductIntroduction() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [openGroupId, setOpenGroupId] = useState(null);
   const [activeIndexes, setActiveIndexes] = useState(
-    Object.fromEntries(categorizedProducts.map((category) => [category.id, 0]))
+    Object.fromEntries(allCategories.map((category) => [category.id, 0]))
   );
   const scrollRefs = useRef({});
+
+  // 閉じた後にカードが画面外へ消えないよう、カードの位置までスクロールする
+  const closeGroup = (groupId) => {
+    setOpenGroupId(null);
+    requestAnimationFrame(() => {
+      document.getElementById(`group-${groupId}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  };
 
   const updateActiveIndex = (categoryId) => {
     const container = scrollRefs.current[categoryId];
@@ -95,10 +130,42 @@ export default function ProductIntroduction() {
           </p>
         </div>
 
-        <div className="space-y-10">
-          {categorizedProducts.map((category) => (
+        <div className="mx-auto max-w-5xl space-y-4">
+          {productGroups.map((group) => {
+            const isOpen = openGroupId === group.id;
+            return (
+              <div key={group.id} id={`group-${group.id}`} className="overflow-hidden rounded-xl bg-white shadow-lg">
+                <button
+                  type="button"
+                  onClick={() => setOpenGroupId(isOpen ? null : group.id)}
+                  aria-expanded={isOpen}
+                  aria-controls={`panel-${group.id}`}
+                  className="group relative flex w-full items-center justify-center overflow-hidden px-6 py-12 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:py-16"
+                >
+                  <Image
+                    src={group.bgImage}
+                    alt=""
+                    fill
+                    className="scale-110 object-cover blur-[3px] transition-transform duration-500 group-hover:scale-[1.15]"
+                    sizes="(max-width: 1024px) 100vw, 1024px"
+                  />
+                  <span className="absolute inset-0 bg-black/40" aria-hidden="true" />
+                  <span className="relative text-3xl font-bold tracking-wide text-white drop-shadow-lg sm:text-4xl">
+                    {group.title}
+                  </span>
+                  <ChevronDownIcon
+                    className={`absolute right-5 top-1/2 h-7 w-7 -translate-y-1/2 text-white drop-shadow transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    aria-hidden="true"
+                  />
+                </button>
+
+                {isOpen ? (
+                  <div id={`panel-${group.id}`} className="space-y-10 bg-gray-50 px-4 py-8 sm:px-6">
+                    {group.categories.map((category) => (
             <div key={category.id}>
-              <h3 className="mb-4 text-center text-2xl font-bold text-gray-800">{category.title}</h3>
+              {group.categories.length > 1 ? (
+                <h3 className="mb-4 text-center text-2xl font-bold text-gray-800">{category.title}</h3>
+              ) : null}
 
               {category.products.length === 0 ? (
                 <div className="rounded-xl bg-white p-10 text-center text-gray-500 shadow">
@@ -158,7 +225,26 @@ export default function ProductIntroduction() {
                 </>
               )}
             </div>
-          ))}
+                    ))}
+
+                    <div className="text-center">
+                      <p className="mb-4 text-xs text-gray-500 sm:text-sm">
+                        掲載されていない商品も取り扱っております。お気軽にお問い合わせください。
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => closeGroup(group.id)}
+                        className="inline-flex items-center gap-2 rounded-full border border-blue-800 bg-white px-8 py-3 font-semibold text-blue-800 transition hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+                      >
+                        <ChevronDownIcon className="h-5 w-5 rotate-180" aria-hidden="true" />
+                        閉じる
+                      </button>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
         </div>
       </div>
 

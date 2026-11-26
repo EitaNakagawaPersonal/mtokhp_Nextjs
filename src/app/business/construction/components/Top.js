@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 const constructionData = {
-  title: "住宅建材事業",
+  title: "住宅資材事業",
   description: [
     "理想の住空間をつくる材料を一気通貫でお届け。",
   ],

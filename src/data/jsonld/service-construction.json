@@ -1,9 +1,9 @@
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "建築資材事業",
-  "name": "建築資材事業",
-  "description": "建築資材・建材（建具・エクステリア・サッシ・水廻り商品等）の製造、販売",
+  "serviceType": "住宅資材事業",
+  "name": "住宅資材事業",
+  "description": "住宅資材・建材（建具・エクステリア・サッシ・水廻り商品等）の製造、販売",
   "provider": {
     "@type": "Organization",
     "name": "株式会社マツオカ",

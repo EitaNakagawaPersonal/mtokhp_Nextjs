@@ -7,13 +7,13 @@ import serviceJsonLd from '@/data/jsonld/service-construction.json';
 
 const breadcrumbJsonLd = buildBreadcrumbJsonLd([
   { name: "ホーム", path: "/" },
-  { name: "建築資材事業", path: "/business/construction" },
+  { name: "住宅資材事業", path: "/business/construction" },
 ]);
 
 
 export const metadata = {
-  title: "建築資材事業",
-  description: "株式会社マツオカの建築資材事業のご紹介。強みと取り扱い製品を掲載しています。",
+  title: "住宅資材事業",
+  description: "株式会社マツオカの住宅資材事業のご紹介。強みと取り扱い製品を掲載しています。",
   alternates: { canonical: "/business/construction" },
 };
 

@@ -9,7 +9,7 @@ const companyDetails = [
   { term: "資本金", description: "2,250万円" },
   { term: "従業員数", description: "33名" },
   { term: "取引銀行", description: "大分銀行/伊予銀行/大分信用金庫/豊和銀行" },
-  { term: "木材事業部", description: "建築資材・造船資材・土木架設・梱包材等の製造、販売" },
+  { term: "木材事業部", description: "住宅資材・造船資材・土木架設・梱包材等の製造、販売" },
   { term: "建材事業部", description: "建具・エクステリア・サッシ・水廻り商品等の販売" },
 ];
 

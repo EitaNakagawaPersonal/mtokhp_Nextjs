@@ -8,7 +8,7 @@ const cardData = [
     link: "/business/shipbuilding",
   },
   {
-    title: "住宅建材事業(建築木材・新建材)",
+    title: "住宅資材事業(建築木材・新建材)",
     imageUrl: "/images/card_construction.jpg",
     link: "/business/construction",
   },

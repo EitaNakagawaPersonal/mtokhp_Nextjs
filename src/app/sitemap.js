@@ -5,6 +5,8 @@ const routes = [
   "/about",
   "/business/construction",
   "/business/real-estate",
+  "/business/real-estate/sell",
+  "/business/real-estate/buy",
   "/business/resin-table",
   "/business/shipbuilding",
   "/forest",

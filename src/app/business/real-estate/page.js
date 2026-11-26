@@ -1,5 +1,6 @@
 import RealEstateStrengths from "./components/RealEstateStrengths";
 import Top from "./components/Top";
+import SellBuyCards from "./components/SellBuyCards";
 import JsonLd from '@/components/JsonLd';
 import serviceJsonLd from '@/data/jsonld/service-real-estate.json';
 import { buildBreadcrumbJsonLd } from '@/lib/breadcrumb';
@@ -26,6 +27,7 @@ export default function RealEstate() {
                     <main className="relative">
                         <Top /> 
                         <RealEstateStrengths />
+                        <SellBuyCards />
                         {/* <ProductIntroduction /> */}
                     </main>
                 </div>
